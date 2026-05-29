@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<!-- 
+  =======================================================================================
+  PROJETO: VR STONES LANDPAGE - MARCENARIA E MARMORARIA DE ALTO PADRÃO
+  IDIOMA DOS COMENTÁRIOS: Português do Brasil
+  ESTRUTURA: Single Page Application (HTML5, Tailwind CSS, Vanilla JS e Custom CSS)
+  =======================================================================================
+  Este arquivo contém toda a estrutura de marcação (HTML), estilização (Tailwind + CSS Customizado)
+  e lógica de interação (Vanilla JS) para a página de destino da VR Stones.
+-->
+<html class="dark" lang="pt-BR">
+
+<head>
+  <!-- Metadados essenciais para codificação de caracteres e responsividade em múltiplos dispositivos -->
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>VR STONES | Marcenaria e Marmoraria de Alto Padrão</title>
+
+  <!-- 
+      IMPORTAÇÃO DE FONTES EXTERNAS (Google Fonts):
+      - Space Grotesk: Utilizada para títulos e elementos de destaque (geométrica e moderna).
+      - Outfit: Utilizada para o corpo de texto e descrições (altamente legível e sofisticada).
+    -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&amp;family=Outfit:wght@300;400;500;600;700&amp;display=swap"
+    rel="stylesheet" />
+
+  <!-- Biblioteca de Ícones Google Material Symbols (Outlined) para símbolos vetoriais leves e consistentes -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+
+  <!-- Inclusão do framework utilitário Tailwind CSS via CDN com plugins adicionais (formulários e container queries) -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+  <!-- 
+      CONFIGURAÇÃO CUSTOMIZADA DO TAILWIND CSS:
+      Personalização da paleta de cores para uma estética escura sofisticada com realces verdes luminosos (#00FF41),
+      arredondamentos padronizados, espaçamentos personalizados e tokens de tipografia integrados.
+    -->
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class", // Habilita o modo escuro baseado em classes CSS
+      theme: {
+        extend: {
+          // Definição da paleta de cores da marca, alinhada aos conceitos de design premium (escura, harmoniosa e tecnológica)
+          "colors": {
+            "on-error": "#690005",
+            "tertiary": "#fbf8f8",
+            "outline-variant": "#3b4b37",
+            "primary-fixed-dim": "#00e639",
+            "secondary-fixed-dim": "#37e44b",
+            "on-surface-variant": "#b9ccb2",
+            "inverse-primary": "#006e16",
+            "outline": "#84967e",
+            "surface-container-highest": "#353534",
+            "primary-fixed": "#72ff70",
+            "on-error-container": "#ffdad6",
+            "surface-dim": "#131313",
+            "secondary": "#3fea50",
+            "error": "#ffb4ab",
+            "on-background": "#e5e2e1",
+            "on-tertiary-container": "#616060",
+            "on-secondary-fixed": "#002203",
+            "on-surface": "#e5e2e1",
+            "surface-container": "#201f1f",
+            "secondary-container": "#02cc35",
+            "on-primary": "#003907",
+            "surface-bright": "#3a3939",
+            "on-tertiary-fixed-variant": "#474746",
+            "surface-container-low": "#1c1b1b",
+            "primary": "#ebffe2",
+            "tertiary-fixed": "#e4e2e1",
+            "tertiary-fixed-dim": "#c8c6c5",
+            "inverse-surface": "#e5e2e1",
+            "on-primary-container": "#007117",
+            "on-primary-fixed": "#002203",
+            "on-primary-fixed-variant": "#00530e",
+            "surface-tint": "#00e639",
+            "on-tertiary-fixed": "#1b1c1c",
+            "background": "#131313",
+            "surface-container-high": "#2a2a2a",
+            "error-container": "#93000a",
+            "inverse-on-surface": "#313030",
+            "tertiary-container": "#dedcdb",
+            "secondary-fixed": "#72ff72",
+            "primary-container": "#00ff41",
+            "surface": "#131313",
+            "on-secondary-fixed-variant": "#00530f",
+            "on-tertiary": "#303030",
+            "on-secondary": "#003908",
+            "surface-container-lowest": "#0e0e0e",
+            "on-secondary-container": "#004f0e",
+            "surface-variant": "#353534"
+          },
+          // Arredondamentos customizados para suavizar a interface
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          // Tokens de espaçamento para manter consistência em margens, calhas e larguras de contêiner
+          "spacing": {
+            "unit": "8px",
+            "margin-desktop": "80px",
+            "gutter": "24px",
+            "container-max": "1440px",
+            "margin-mobile": "20px",
+            "section-gap": "120px"
+          },
+          // Associação de fontes customizadas da marca aos tokens de tipografia do Tailwind
+          "fontFamily": {
+            "body-lg": ["Outfit"],
+            "headline-lg": ["Space Grotesk"],
+            "headline-xl": ["Space Grotesk"],
+            "headline-md": ["Space Grotesk"],
+            "body-md": ["Outfit"],
+            "headline-xl-mobile": ["Space Grotesk"],
+            "headline-lg-mobile": ["Space Grotesk"],
+            "headline-sm": ["Space Grotesk"],
+            "label-md": ["Space Grotesk"]
+          },
+          // Definições de tamanho de fonte, altura de linha, espaçamento entre letras e peso para cada estilo de tipografia
+          "fontSize": {
+            "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "headline-lg": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-xl": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["32px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+            "headline-xl-mobile": ["40px", { "lineHeight": "1.1", "fontWeight": "700" }],
+            "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "700" }],
+            "headline-sm": ["24px", { "lineHeight": "1.4", "fontWeight": "600" }],
+            "label-md": ["14px", { "lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500" }]
+          }
+        },
+      },
+    }
+  </script>
+
+  <!-- 
+      ESTILOS CSS CUSTOMIZADOS (Inline):
+      Implementação de regras de design finas, animações de alta performance e suporte a elementos
+      visuais que transcendem a estrutura utilitária clássica do Tailwind CSS.
+    -->
+  <style>
+    /* Estilos globais do corpo da página com fundo escuro absoluto (#0A0A0A) e cursor ocultado para usar a versão customizada */
+    body {
+      background-color: #0A0A0A;
+      color: #e5e2e1;
+      overflow-x: hidden;
+      cursor: none
+    }
+
+    /* Textura de Grão Analógico (Grain Overlay): Imagem sobreposta de ruído com opacidade ultrabaixa (0.04) para dar uma estética tátil analógica */
+    .grain-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      /* Garante que cliques atravessem a camada */
+      z-index: 9999;
+      opacity: 0.04;
+      background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAxrOmpcnUtH090KQ883cq5_3LAuJ_LJwGsxGetTumIkNG7o_xJ88LTob_MgaZswrFiq90u9E4ilPmlAAH4LNCbu_ecq66igit0po_zLSZwvLGZjY7wJQVUUy3AYEHEgbRur0gPB3dMCk3kvVWs9wm5OluC_kpO6viqfe6SRXWLgG6io1h9Y6E64IJfBtS7oyZz2dR2g2A4PjFgqDtqjibcwhEfqhxnGL1feHaAPOb5KUdL3OjQIbhIa6uYQn5918kykibCAjs-1bbN)
+    }
+
+    /* Cursor personalizado padrão (círculo verde menor) */
+    .custom-cursor {
+      width: 14px;
+      height: 14px;
+      background: #00FF41;
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      /* Impede que o próprio cursor cause disparo de eventos de hover */
+      z-index: 10000;
+      transition: transform 0.2s ease, width 0.2s ease, height 0.2s ease;
+      transform: translate(-50%, -50%)
+    }
+
+    /* Cursor personalizado expandido (círculo maior translúcido com borda verde) ativado no hover de elementos interativos */
+    .custom-cursor.expand {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 255, 65, 0.2);
+      border: 1px solid #00FF41
+    }
+
+    /* Efeito de Ken Burns: Animação suave e lenta de aproximação (zoom) aplicada às imagens de fundo do Hero */
+    .ken-burns {
+      animation: kenburns 40s ease-in-out infinite alternate
+    }
+
+    @keyframes kenburns {
+      0% {
+        transform: scale(1);
+      }
+
+      100% {
+        transform: scale(1.15);
+      }
+    }
+
+    /* Efeito Glow Pulse: Pulso de sombra externa verde para destacar botões interativos de ação principal */
+    .glow-pulse {
+      animation: pulse-glow 2s infinite
+    }
+
+    @keyframes pulse-glow {
+      0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0.4);
+      }
+
+      70% {
+        box-shadow: 0 0 0 15px rgba(0, 255, 65, 0);
+      }
+
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 65, 0);
+      }
+    }
+
+    /* Animação Reveal no Scroll: Classes dinâmicas gerenciadas pelo IntersectionObserver para fade-in e translação para cima */
+    .reveal {
+      opacity: 0;
+      transform: translatey(30px);
+      transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1)
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translatey(0)
+    }
+
+    /* Marquee (Painel de Texto Infinito): Movimento contínuo e infinito horizontal da esquerda para a direita de nomes de materiais */
+    .marquee-content {
+      display: flex;
+      animation: marquee 30s linear infinite
+    }
+
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+        /* Rola exatamente metade do contêiner duplicado para loop perfeito */
+      }
+    }
+
+    /* Animação de Revelação de Palavras: Faz com que cada palavra surja de baixo para cima com atraso escalonado */
+    .word-reveal span {
+      display: inline-block;
+      opacity: 0;
+      transform: translatey(100%);
+      animation: word-up 0.5s forwards cubic-bezier(0.22, 1, 0.36, 1)
+    }
+
+    @keyframes word-up {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Personalização da barra de rolagem da janela para manter o visual escuro minimalista */
+    ::-webkit-scrollbar {
+      width: 8px
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1A1A1A;
+      border-radius: 10px
+    }
+
+    /* SISTEMA DE CARROSSEL DE MATERIAIS / CATÁLOGO */
+    #catalog-carousel-container {
+      overflow: hidden;
+      /* Oculta a barra de rolagem horizontal nativa */
+      width: 100%;
+      position: relative;
+    }
+
+    #catalog-track {
+      display: flex;
+      /* Alinha os cards horizontalmente */
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      /* Transição suave de deslize baseada em transform: translateX */
+    }
+
+    /* Largura padrão dos cards (três visíveis por vez no desktop com espaçamento de calhas) */
+    .carousel-card {
+      width: calc((100% - 48px) / 3);
+      flex-shrink: 0;
+      /* Impede o esmagamento dos cards no contêiner flex */
+      box-sizing: border-box;
+    }
+
+    /* Responsividade para tablets (dois cards visíveis) */
+    @media (max-width: 1024px) {
+      .carousel-card {
+        width: calc((100% - 24px) / 2);
+      }
+    }
+
+    /* Responsividade para celulares (um card visível) */
+    @media (max-width: 768px) {
+      .carousel-card {
+        width: 100%;
+      }
+    }
+
+    /* Ocultação de cards filtrados por categorias */
+    .hidden-card {
+      display: none !important;
+    }
+  </style>
+</head>
+
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-on-primary">
+  <!-- Sobreposição de ruído de grão analógico para toda a página -->
+  <div class="grain-overlay"></div>
+
+  <!-- Cursor customizado que segue o mouse (ocultado em celulares) -->
+  <div class="custom-cursor hidden md:block" id="cursor"></div>
+
+  <!-- 
+      BARRA DE NAVEGAÇÃO SUPERIOR (FIXA):
+      Fundo translúcido com efeito de desfoque de vidro (backdrop-blur-md) e transição de altura no scroll.
+    -->
+  <nav
+    class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md dark:bg-surface/80 border-b border-outline-variant/20 transition-all duration-300 h-20"
+    id="top-nav">
+    <div
+      class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-full">
+      <!-- Logotipo da marca com imagem vetorial e tipografia estilizada em caixa alta -->
+      <a class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2 group" href="#">
+        <img alt="VR STONES Logo" class="h-10 w-auto"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCoCrHcyoercUQWH7kH3UOS5XO7DygJa6tfXi5HW2KoOXCM-Oxedo-fyTli5ukoVezM6GW80tII39X1Hp_RkAtJ1OGTYlQInpWQryYVP7Y-JzG_p57djrRHy8rS1tqtEurXBh0ruf7_qHY_-6U8YJkbTXquCHY7X2dzhb6V5HHvErSQoynWaCP0GUM2jyKOPEPCZwaww8YbGxhsDh_TA_lu2_uLj4LGwprpWcU7kvUujcWNHVlBk0OvMa0GMTlGjUVZ-rgM0a3Nq9m" />
+        <span class="tracking-tight uppercase">VR STONES</span>
+      </a>
+
+      <!-- Menu de navegação para desktops (links internos âncoras) -->
+      <div class="hidden md:flex items-center gap-10">
+        <a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md"
+          href="#inicio">Início</a>
+        <a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors duration-300"
+          href="#sobre">Sobre</a>
+        <a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors duration-300"
+          href="#materiais">Materiais</a>
+        <a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors duration-300"
+          href="#projetos">Projetos</a>
+        <a class="text-on-surface-variant font-medium font-label-md text-label-md hover:text-primary transition-colors duration-300"
+          href="#contato">Contato</a>
+      </div>
+
+      <!-- Área de Botões (Solicitação de Orçamento e Menu Hambúrguer para Dispositivos Móveis) -->
+      <div class="flex items-center gap-4">
+        <!-- Botão CTA (Call to Action) com pulso luminoso para telas médias e grandes -->
+        <a class="hidden md:inline-block bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider glow-pulse hover:scale-105 transition-transform active:scale-95"
+          href="#contato">
+          Solicitar Orçamento
+        </a>
+        <!-- Ícone do Menu Hamburguer para celulares/tablets -->
+        <button id="mobile-menu-btn"
+          class="flex md:hidden text-on-surface hover:text-primary transition-colors focus:outline-none select-none">
+          <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- CONTEÚDO PRINCIPAL DA PÁGINA -->
+  <main>
+
+    <!-- SEÇÃO HERO (BOAS-VINDAS): Fundo cinematográfico animado e título dinâmico com impacto imediato -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" id="inicio">
+      <!-- Elemento de fundo (Imagem com efeito Ken Burns de zoom suave + máscara degradê escuro) -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+        <img class="w-full h-full object-cover opacity-40 ken-burns"
+          data-alt="A luxurious close-up of dark Nero Marquina marble with elegant white veining, captured in high-detail. The scene is atmospheric with cinematic lighting, reflecting a deep black aesthetic typical of high-end craftsmanship. Subtle glowing green accents are hinted in the shadows to maintain the VR Stones brand identity. The overall mood is sophisticated, enduring, and ultra-modern."
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzYR6-M9QO-16frAKffPpq3YFops09n7N9XGZ0BAjvkhUIOdgMO7Gg4KvMzG4pl_bTJf-KOm0fCgOLYAPr0hQXVCPbtIBCelrhSuYQXk9k9j4r6BgX0efww8Lat-UQpuGqnLcadSE8GwwHXUV0lfBOvHU1WZ1T8_s5A-l-r_2sNfCRRORI1G98OoJPXU9aQVXWMenyhHbAlnzMJpMIcTl9UIPgI_H_ggMLb1XQS1PqyHOkcD8-oLiD6O569y6SkFJ2qTJcKt_JRq_U" />
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#0A0A0A]/50 to-[#0A0A0A]"></div>
+      </div>
+
+      <!-- Conteúdo textual centralizado da seção de boas-vindas -->
+      <div class="relative z-10 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center">
+        <!-- Título dinâmico (as palavras serão separadas e animadas por JavaScript) -->
+        <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-6 word-reveal max-w-4xl mx-auto">
+          Transformamos pedra em obra-prima
+        </h1>
+        <!-- Descritivo com classe "reveal" (fade-in ao entrar na tela) -->
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto reveal">
+          Mármore, granito, quartzo e muito mais. Tecnologia de precisão aliada ao artesanato secular para projetos que
+          desafiam o tempo.
+        </p>
+        <!-- Botões de ação direta -->
+        <div class="flex flex-col md:flex-row gap-6 justify-center items-center reveal">
+          <a class="bg-primary-container text-on-primary-container px-10 py-5 rounded-full font-label-md text-label-md font-bold uppercase tracking-widest hover:scale-105 transition-transform"
+            href="#materiais">
+            Ver Materiais
+          </a>
+          <a class="border border-outline px-10 py-5 rounded-full font-label-md text-label-md font-bold uppercase tracking-widest text-on-surface hover:bg-surface-container transition-colors"
+            href="#contato">
+            Fale Conosco
+          </a>
+        </div>
+      </div>
+
+      <!-- Painel Inferior de Texto Infinito (Marquee) exibindo os materiais do catálogo da empresa -->
+      <div
+        class="absolute bottom-0 w-full bg-surface-container-lowest/80 backdrop-blur-sm border-t border-outline-variant/10 py-6 overflow-hidden">
+        <div class="marquee-content whitespace-nowrap flex items-center gap-12">
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Mármore
+            Carrara <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Granito
+            Negro <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Quartzo
+            Prime <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Ônix
+            Translúcido <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Calacatta
+            Gold <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Silestone
+            <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <!-- BLOCO DUPLICADO: Essencial para manter o fluxo contínuo e ocultar o reset da animação (efeito infinito) -->
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Mármore
+            Carrara <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Granito
+            Negro <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Quartzo
+            Prime <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Ônix
+            Translúcido <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+          <span
+            class="flex items-center gap-4 text-on-surface-variant font-label-md text-label-md font-bold tracking-[0.2em] uppercase">Calacatta
+            Gold <span class="material-symbols-outlined text-primary text-xs">diamond</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO SOBRE (A EMPRESA): Grid de duas colunas com contadores estatísticos que se ativam ao scroll -->
+    <section class="py-section-gap bg-surface" id="sobre">
+      <div
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <!-- Coluna da Esquerda: Imagem conceitual com moldura metálica e máscara sutil lateral -->
+        <div class="relative reveal h-[600px] rounded-lg overflow-hidden border border-outline-variant/30">
+          <img class="w-full h-full object-cover"
+            data-alt="A professional stonemason working in a dark, high-tech workshop. Sparks fly from a precise CNC waterjet cutter slicing through a thick slab of grey stone. The lighting is dramatic, with a focus on the tactile texture of the raw material. The setting reflects an expensive, architectural design environment where traditional craftsmanship meets futuristic precision. Digital green indicators glow softly in the background."
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2kpau7AqA-4TUhbI_6wXcIXh4lbse2ygfoTeaHMPGNoWbxH0LoV4gqciqYB54-WcEzigTNR8CEVo7HNiSfjVVmnfp8llArfTgF9Xdkm9-XQHthUTm76fBUxFBgkNzAaLB06kamxEoyBn0TTHi1IwX8BGXgRn1GkjCbpK1dMMLxFOSGoefXRRKp09SsTg1IeM4jlhiBYUn1RHhD6h9btedBXCGOHljMoABn1WFj5pK-ByG6xrLWvms28cHnkY7_904RINWQKSW4qnH" />
+          <div class="absolute inset-0 bg-gradient-to-r from-background/40 to-transparent"></div>
+        </div>
+        <!-- Coluna da Direita: Apresentação da VR Stones e contadores animados -->
+        <div class="reveal">
+          <span class="text-primary font-label-md text-label-md uppercase tracking-[0.3em] mb-6 block">Quem Somos</span>
+          <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-8 leading-tight">Legado Esculpido
+            em Precisão.</h2>
+          <p class="font-body-lg text-body-lg text-on-surface-variant mb-12">
+            Na VR Stones, acreditamos que cada bloco de pedra conta uma história milenar. Nossa missão é refinar essa
+            história através da marcenaria e marmoraria de precisão digital. Com sede em uma estrutura de ponta,
+            atendemos projetos residenciais e comerciais que exigem o absoluto máximo em detalhamento e durabilidade.
+          </p>
+
+          <!-- Grid de Indicadores Estatísticos Animados por Script (Atributo data-count define o valor final do contador) -->
+          <div class="grid grid-cols-3 gap-8 border-t border-outline-variant/20 pt-12">
+            <div>
+              <div class="font-headline-md text-headline-md text-primary mb-2" data-count="10">0</div>
+              <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Anos de
+                História</div>
+            </div>
+            <div>
+              <div class="font-headline-md text-headline-md text-primary mb-2" data-count="500">0</div>
+              <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Projetos
+                Entregues</div>
+            </div>
+            <div>
+              <div class="font-headline-md text-headline-md text-primary mb-2" data-count="30">0</div>
+              <div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest">Tipos de Pedras
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO MATERIAIS (CATÁLOGO): Carrossel responsivo e sistema de filtragem de materiais via JavaScript -->
+    <section class="py-section-gap bg-surface-container-lowest relative overflow-hidden" id="materiais">
+      <!-- Letreiro de Fundo Gigante Estilizado para ambientação visual refinada -->
+      <div
+        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none opacity-[0.03] select-none">
+        <span class="text-[300px] font-black tracking-tighter uppercase whitespace-nowrap leading-none">PEDRAS</span>
+      </div>
+
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+        <!-- Cabeçalho do Catálogo com botões de navegação lateral (prev/next) do carrossel -->
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-end mb-16 gap-8 reveal">
+          <div class="text-center md:text-left">
+            <span class="text-primary font-label-md text-label-md uppercase tracking-[0.3em] mb-6 block">Catálogo VR
+              Stones</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">Materiais Selecionados</h2>
+          </div>
+          <!-- Botões de navegação interativos para rolar o carrossel manualmente -->
+          <div class="flex gap-4">
+            <button id="carousel-prev"
+              class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-white hover:text-[#00FF41] hover:border-[#00FF41] transition-all cursor-pointer">
+              <span class="material-symbols-outlined select-none">chevron_left</span>
+            </button>
+            <button id="carousel-next"
+              class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-white hover:text-[#00FF41] hover:border-[#00FF41] transition-all cursor-pointer">
+              <span class="material-symbols-outlined select-none">chevron_right</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Botões de Filtragem Dinâmica por categoria (Todos, Mármores, Granitos, Exóticos) -->
+        <div class="flex flex-wrap justify-center gap-4 mb-16 reveal" id="filter-buttons">
+          <button
+            class="bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:opacity-90 transition-opacity"
+            data-cat="todos">Todos</button>
+          <button
+            class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-outline-variant/30 transition-colors"
+            data-cat="marmore">Mármores</button>
+          <button
+            class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-outline-variant/30 transition-colors"
+            data-cat="granitos">Granitos</button>
+          <button
+            class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-outline-variant/30 transition-colors"
+            data-cat="exoticos">Exóticos</button>
+        </div>
+
+        <!-- 
+                  ESTRUTURA DE DADOS DO CARROSSEL:
+                  Cada card possui atributos `data-*` embutidos. Quando o usuário clica em "Detalhes", a lógica Javascript
+                  coleta esses dados e injeta no modal global de exibição estruturado no fim do arquivo.
+                -->
+        <div id="catalog-carousel-container" class="reveal">
+          <div id="catalog-track" style="gap: 24px;">
+
+            <!-- CARD 1: Nero Marquina -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="marmore" data-name="Nero Marquina" data-category-display="Mármore" data-origin="Espanha"
+              data-price="R$ 1.200 / m²"
+              data-use="Revestimentos internos, banheiros, lavabos, lareiras e pisos de baixo tráfego. Evitar áreas externas ou cozinhas devido à acidez."
+              data-desc="Mármore negro de grão fino com veios brancos marcantes e reluzentes, extraído na Espanha. É sinônimo de elegância e sofisticação arquitetônica."
+              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAjHAqcvKGy9QCZViqPo1Uf_pQkz4AYvZ73jAFAv_6k3sE3QhWq4n_W_19PLDVJpSWTVjR_Ol0wv0U975PJfBcy9sCg9fl7LvN_GxSzbnbQd48POdcqPw8Jly46H3-1EAmBNdeVrxa_-1aypqmiCkv5Enj_Ler1S1l3KxcohaLYb8F2_rvqCb4OcO41PqBcC-G_BkMxRLBe3MDiS6WgCzwZV4zDRt92WBUirfSrFbFtBQQnQa9rctPqZDHjFI22Po8vOERE42Q62e4q">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjHAqcvKGy9QCZViqPo1Uf_pQkz4AYvZ73jAFAv_6k3sE3QhWq4n_W_19PLDVJpSWTVjR_Ol0wv0U975PJfBcy9sCg9fl7LvN_GxSzbnbQd48POdcqPw8Jly46H3-1EAmBNdeVrxa_-1aypqmiCkv5Enj_Ler1S1l3KxcohaLYb8F2_rvqCb4OcO41PqBcC-G_BkMxRLBe3MDiS6WgCzwZV4zDRt92WBUirfSrFbFtBQQnQa9rctPqZDHjFI22Po8vOERE42Q62e4q"
+                alt="Nero Marquina" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
+                <h3 class="font-headline-sm text-headline-sm">Nero Marquina</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 2: Calacatta Gold -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="marmore" data-name="Calacatta Gold" data-category-display="Mármore" data-origin="Itália"
+              data-price="R$ 3.800 / m²"
+              data-use="Áreas internas de alto padrão, painéis decorativos, banheiros de luxo e tampos de lavatórios. Evitar uso em cozinhas."
+              data-desc="Mármore nobre de fundo branco puro com veios marcantes em tons cinza e detalhes dourados. Uma das pedras mais raras do mundo."
+              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuC70Td--VqM7dJj3iI5c5vc5IottF5vs3AiXkzmvEWoLyPT4H1pzjw0cB14eh2uWcq4OfxTM1R8gHfz6b1-CwRaV8G-rX7xvYpcjWe38GeugKCDm-5l5o2JNG8EfacoyB0wTdrdp4S9m46dyuD3aNy_FrrQ3nVnJ9y0RyVQuuZF6NZ9-NLWsHAiwFkn4G4mTOqqZjuKZd0feVrczvqH_gdWyAolpGeKE4t90DbbxHWewBBCZVaYyOH1qDy0epzy5D0-VCurK7SveMf_">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC70Td--VqM7dJj3iI5c5vc5IottF5vs3AiXkzmvEWoLyPT4H1pzjw0cB14eh2uWcq4OfxTM1R8gHfz6b1-CwRaV8G-rX7xvYpcjWe38GeugKCDm-5l5o2JNG8EfacoyB0wTdrdp4S9m46dyuD3aNy_FrrQ3nVnJ9y0RyVQuuZF6NZ9-NLWsHAiwFkn4G4mTOqqZjuKZd0feVrczvqH_gdWyAolpGeKE4t90DbbxHWewBBCZVaYyOH1qDy0epzy5D0-VCurK7SveMf_"
+                alt="Calacatta Gold" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
+                <h3 class="font-headline-sm text-headline-sm">Calacatta Gold</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 3: Verde Guatemala -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="exoticos" data-name="Verde Guatemala" data-category-display="Exótico"
+              data-origin="Guatemala" data-price="R$ 1.500 / m²"
+              data-use="Paredes decorativas, tampos de lavabo, bordas de piscina, lareiras e detalhes ornamentais. Excelente durabilidade interna."
+              data-desc="Rocha exótica de cor verde-escura profunda com veios negros intensos que lembram florestas tropicais. Altíssimo apelo estético."
+              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuA99SRMZN15HdAdDuHfgC7B4FwtiRIIgbBoHPTEQt_Wc_cQj9BjcweDfzN2oazz13CTLQUYwL4TYsC2VEP46ap_kS4mzESzzBAQpHFPp969qVdcoQlXmf8ErvS4DCyp7IPMc-b6E4Y-VbTFSMECedKgD4lAXCxWIbfWln0FJnsyjZ1O610Zc_bKKftD4LkwPzVKOuBDZ8IIu4n4I1HxIM_zUeDSm1myQ9dP3bovFgpt6mUDkZJby4GAMqrI2X5yG6jkEFcH2OBq_fiF">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA99SRMZN15HdAdDuHfgC7B4FwtiRIIgbBoHPTEQt_Wc_cQj9BjcweDfzN2oazz13CTLQUYwL4TYsC2VEP46ap_kS4mzESzzBAQpHFPp969qVdcoQlXmf8ErvS4DCyp7IPMc-b6E4Y-VbTFSMECedKgD4lAXCxWIbfWln0FJnsyjZ1O610Zc_bKKftD4LkwPzVKOuBDZ8IIu4n4I1HxIM_zUeDSm1myQ9dP3bovFgpt6mUDkZJby4GAMqrI2X5yG6jkEFcH2OBq_fiF"
+                alt="Verde Guatemala" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Exótico</span>
+                <h3 class="font-headline-sm text-headline-sm">Verde Guatemala</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 4: Carrara Gioia -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="marmore" data-name="Carrara Gioia" data-category-display="Mármore" data-origin="Itália"
+              data-price="R$ 1.800 / m²"
+              data-use="Pisos internos, escadas residenciais, banheiros de luxo e tampos integrados."
+              data-desc="Mármore italiano clássico de fundo branco brilhante com delicados veios cinzentos ramificados. O maior clássico atemporal da arquitetura."
+              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAVBonqFYFwBBZespu5p056JgBDHCV51vAwY99nOqnVnWtoDRPLZRp1GV7t-o2Oh-gpEKZDtVvzomgUYxX-0wQCi5J8gKwXhBEC_9ZCnqc2tiEFSh9_C5v5RCa2LipM62DV3ARy08ThrBpYUVT7r2ZqyLgZuzbaPnudVefXqoahX4IVT74cBUWnWyCzapmbPtaUbRiptxeLZyUxzKfvsOO6Z2w6FDSJSKiyeC00tnLyglPAPWP5RlMIv0V30ulgiLaj1jWxjA_1IgCY">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVBonqFYFwBBZespu5p056JgBDHCV51vAwY99nOqnVnWtoDRPLZRp1GV7t-o2Oh-gpEKZDtVvzomgUYxX-0wQCi5J8gKwXhBEC_9ZCnqc2tiEFSh9_C5v5RCa2LipM62DV3ARy08ThrBpYUVT7r2ZqyLgZuzbaPnudVefXqoahX4IVT74cBUWnWyCzapmbPtaUbRiptxeLZyUxzKfvsOO6Z2w6FDSJSKiyeC00tnLyglPAPWP5RlMIv0V30ulgiLaj1jWxjA_1IgCY"
+                alt="Carrara Gioia" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
+                <h3 class="font-headline-sm text-headline-sm">Carrara Gioia</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 5: Travertino Romano -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="marmore" data-name="Travertino Romano" data-category-display="Clássico"
+              data-origin="Itália" data-price="R$ 1.400 / m²"
+              data-use="Revestimentos de paredes internas e externas, pisos internos e áreas secas residenciais. Requer impermeabilização em banheiros."
+              data-desc="Rocha calcária sedimentar de tons beges e textura rústica com cavidades naturais. Utilizada desde a antiguidade em tempos romanos."
+              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuB8tMhOJTVlhy0myJ4fzcCUuEifqQ9v_19vGUPS-lFx-H3TcFs-yBR-_DlHpB-bPymjdDZWRZdLsoOnVNWPsJqI8EHlxmrOSvMQMw2o1nn8yILjGJk8sVTNK4xiMyULBkFA_TmjnEMZT0gii2Da3F6QQnutBpReU2nikH-F5doxRuQfN-DFjBXwgI0GJBKGlTj-2GbalqjpLzESLCU0eDQrZZtQHsX61UFgNC1fy1XS8U_xapWWTK6Q-wCpPWMYw3J_3lVDtQggBV8E">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8tMhOJTVlhy0myJ4fzcCUuEifqQ9v_19vGUPS-lFx-H3TcFs-yBR-_DlHpB-bPymjdDZWRZdLsoOnVNWPsJqI8EHlxmrOSvMQMw2o1nn8yILjGJk8sVTNK4xiMyULBkFA_TmjnEMZT0gii2Da3F6QQnutBpReU2nikH-F5doxRuQfN-DFjBXwgI0GJBKGlTj-2GbalqjpLzESLCU0eDQrZZtQHsX61UFgNC1fy1XS8U_xapWWTK6Q-wCpPWMYw3J_3lVDtQggBV8E"
+                alt="Travertino Romano" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Clássico</span>
+                <h3 class="font-headline-sm text-headline-sm">Travertino Romano</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 6: Preto Absoluto -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="granitos" data-name="Preto Absoluto" data-category-display="Granito" data-origin="Brasil"
+              data-price="R$ 950 / m²"
+              data-use="Bancadas de cozinha, áreas gourmet de alto padrão, escadas residenciais, tampos de alto tráfego e pisos externos resistentes."
+              data-desc="Granito brasileiro nobre de granulação finíssima e cor preta homogênea absoluta. Oferece altíssima resistência a riscos, calor e manchas cotidianas."
+              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAtwvKH8hD2wb4SuuAMzmdb3Hhi4hmxqsl3HW_jPaKGUDebwTqzH5chGOPgrxCQXcInNWnuuXjeKb9rnZGthKwTrYGf_NSFxqm_E4gSnGlrUdt9NbE091g3Spj922mSrbJ1_P15V6ncXwCD1d0emLYMXCL_wsyvW7iM5YPJaSgkLYMYNl1Px88CZ2XkBIN7bE_fEWtoZZgtfhwe6hI8_VHYgoskxBHk6Ye-aCIn_4-vVflaD3DI8uofHNg1ZUKJfsUBykdROTUB9hIA">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtwvKH8hD2wb4SuuAMzmdb3Hhi4hmxqsl3HW_jPaKGUDebwTqzH5chGOPgrxCQXcInNWnuuXjeKb9rnZGthKwTrYGf_NSFxqm_E4gSnGlrUdt9NbE091g3Spj922mSrbJ1_P15V6ncXwCD1d0emLYMXCL_wsyvW7iM5YPJaSgkLYMYNl1Px88CZ2XkBIN7bE_fEWtoZZgtfhwe6hI8_VHYgoskxBHk6Ye-aCIn_4-vVflaD3DI8uofHNg1ZUKJfsUBykdROTUB9hIA"
+                alt="Preto Absoluto" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Granito</span>
+                <h3 class="font-headline-sm text-headline-sm">Preto Absoluto</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 7: Arabescato Corchia -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="marmore" data-name="Arabescato Corchia" data-category-display="Mármore"
+              data-origin="Itália" data-price="R$ 2.400 / m²"
+              data-use="Revestimentos de banheiros, tampos de aparadores, lareiras de luxo e revestimentos internos nobres."
+              data-desc="Mármore brechado italiano com fundo branco-creme e veios cinzas e pretos arredondados ricamente entrelaçados. Obra-prima natural."
+              data-img="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Arabescato Corchia" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
+                <h3 class="font-headline-sm text-headline-sm">Arabescato</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 8: Super White -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="exoticos" data-name="Super White" data-category-display="Quartzito" data-origin="Brasil"
+              data-price="R$ 1.950 / m²"
+              data-use="Bancadas gourmet, tampos de jantar, revestimentos de parede e ilhas integradas de alta resistência."
+              data-desc="Quartzito natural brasileiro que une a estética luxuosa do mármore Carrara com a altíssima dureza e resistência a riscos e ácidos do granito."
+              data-img="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=600">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=600" alt="Super White" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Quartzito</span>
+                <h3 class="font-headline-sm text-headline-sm">Super White</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 9: Cinza Platina -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="granitos" data-name="Cinza Platina" data-category-display="Granito" data-origin="Brasil"
+              data-price="R$ 780 / m²"
+              data-use="Pisos comerciais, garagens, calçadas residenciais de alto tráfego e bancadas funcionais de alta durabilidade."
+              data-desc="Granito brasileiro altamente homogêneo de textura fina e cor cinza-metálica marcante. Extremamente estável e resiliente contra intempéries."
+              data-img="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600" alt="Cinza Platina" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Granito</span>
+                <h3 class="font-headline-sm text-headline-sm">Cinza Platina</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+            <!-- CARD 10: Ônix Miel -->
+            <div
+              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
+              data-category="exoticos" data-name="Ônix Miel" data-category-display="Exótico" data-origin="México"
+              data-price="R$ 4.500 / m²"
+              data-use="Painéis de parede retroiluminados, balcões de recepção de alto padrão e tampos decorativos de bares."
+              data-desc="Rocha semipreciosa translúcida de cor mel dourada exuberante. Cria efeitos luminosos espetaculares sob incidência traseira de luz LED."
+              data-img="https://images.unsplash.com/photo-1565117131175-b436faca5ad4?w=600">
+              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="https://images.unsplash.com/photo-1565117131175-b436faca5ad4?w=600" alt="Ônix Miel" />
+              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
+              </div>
+              <div class="absolute bottom-6 left-6">
+                <span
+                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Exótico</span>
+                <h3 class="font-headline-sm text-headline-sm">Ônix Miel</h3>
+              </div>
+              <div
+                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+                <button
+                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO PROJETOS (PORTFÓLIO): Grid assimétrico (Masonry-like) com imagens de projetos em tons de cinza que ganham cor no hover -->
+    <section class="py-section-gap bg-surface" id="projetos">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <!-- Cabeçalho do Portfólio com chamada e link externo para o Instagram da marmoraria -->
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 reveal">
+          <div>
+            <span class="text-primary font-label-md text-label-md uppercase tracking-[0.3em] mb-6 block">Nosso
+              Portfólio</span>
+            <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg max-w-xl">Onde a Imaginação se torna
+              Tangível.</h2>
+          </div>
+          <a href="https://www.instagram.com/vr_stonesmarmoraria/" target="_blank"
+            class="inline-flex justify-center items-center border border-outline px-10 py-4 rounded-full font-label-md text-label-md font-bold uppercase tracking-widest text-on-surface hover:bg-surface-container transition-colors">Ver
+            Instagram</a>
+        </div>
+
+        <!-- Grid Responsivo Assimétrico com efeitos hover suaves -->
+        <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-gutter h-auto md:h-[900px]">
+
+          <!-- Projeto 1 (Coluna dupla, linha dupla - Destaque Principal) -->
+          <div class="md:col-span-2 md:row-span-2 group relative overflow-hidden rounded-lg reveal">
+            <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              data-alt="A modern minimalist kitchen with a massive island made from seamless Calacatta Gold marble. The cabinetry is dark wood, and the lighting is a mix of natural light from large windows and hidden LED strips that emit a soft green glow. The space is uncluttered and architectural, showcasing the precision-cut edges of the stonework."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbil6NKKEiQmXxnXjK13orfBwLwk_SYBlyJtGvsI_aoLTVrN11W3KNp0OHANqOfwJuFKtI3P95e24sG4BZmMO8U1ACGJU62tk-iykbB0nLJCxuPSW3KoQz-eCkupcak8uaXLJpUo0oJQViejwCm5ZI2e4oB2PN5x7BuwGlY35EOPO-QNxkzZprIGhapVujsDWfiRGR5oLw_D5D4NSfIcfeqpYwsU7TdOw0FEdf5XSgbIHH94uOxafi0dKBNR0r1y-7BVok2rZcMgtN" />
+            <div
+              class="absolute top-6 left-6 bg-primary-container/90 text-on-primary-container px-4 py-1 rounded-full text-label-md font-bold uppercase tracking-wider">
+              Cozinha | Alphaville</div>
+          </div>
+
+          <!-- Projeto 2 (Coluna dupla, linha única) -->
+          <div class="md:col-span-2 group relative overflow-hidden rounded-lg reveal">
+            <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              data-alt="A high-end bathroom featuring a floating vanity made of Nero Marquina marble. The wall is clad in large slabs of the same material, book-matched for a stunning visual effect. The lighting is moody and dramatic, highlighting the high-gloss polish of the stone. A single designer faucet in matte black adds to the modern aesthetic."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBdCUh2c-AI6f7mtnigpH5ZuBEFKeVJKBDYEyl1rOopSHe9Yh5H0GTQ98hYDeDRpE9rDyHc_SV969AffrorzQrrazIYLrToB7xRoaL4AOcgouaa-c3f-vGViLaRCekmqaL8vED_rilZFZOU5E3iEFQshRVoCPbyVwfX4mp9rkABxKm72JzoY2gmdWUejKGiTbjzbZb_3RzVc0adjA70NBwnsHP7h2uLSMiBgfMZqhcbbFOdggGSnETecUxl64OMGcGNYf7Z-B58AkE" />
+            <div
+              class="absolute top-6 left-6 bg-primary-container/90 text-on-primary-container px-4 py-1 rounded-full text-label-md font-bold uppercase tracking-wider">
+              Banheiro | Jardins</div>
+          </div>
+
+          <!-- Projeto 3 (Coluna simples, linha única) -->
+          <div class="group relative overflow-hidden rounded-lg reveal">
+            <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              data-alt="Bespoke furniture detail: A low coffee table crafted from a single block of Emerald Green Granite. The edges are faceted and polished to a sharp precision. The table sits on a dark oak floor in a minimalist living room setting with high-contrast shadows."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkDSw60sfGAlQCRfMGVkY37j_uBnTaWvEpY-697vlTT_C-q-nKKet819_YSsFvJhtoWRrrQcw4c6dpco_4L9f34Yw2DB82QRte7KN0NTDsj6tucRVqiHrXeZiRV-zv8oZu8ooJ6hCnPdwCROxkAVwstrTb6UZSJ89G6MtsNgwK2LaC_PBN5BscuG6S2m2-0nidoOZgnWiTeM0Mtjp9QvO5bLzkQ_I8AezO6PLXgmYJD2CcSq9iyS2tUww9GftACGzYSmaepR3tGpuK" />
+            <div
+              class="absolute top-6 left-6 bg-primary-container/90 text-on-primary-container px-4 py-1 rounded-full text-label-md font-bold uppercase tracking-wider">
+              Mobiliário | Pinheiros</div>
+          </div>
+
+          <!-- Projeto 4 (Coluna simples, linha única) -->
+          <div class="group relative overflow-hidden rounded-lg reveal">
+            <img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
+              data-alt="A luxurious office lobby with an expansive reception desk made of backlit translucent Onyx. The soft warm glow of the stone contrasts with the dark, minimalist architectural surroundings. Precision-cut lines and subtle green light accents on the floor create a futuristic, professional atmosphere."
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3ERL8DGJ5Hs_HSBOq9eKy37bQ9VqRCWCI9dmHzOC6nkyYftErklvIev_3YXDitTHjyg-7KdEZp3x9_AifY7IEfHxYBQa2NogN-JObbxlH0cIJVvbF51fLsI3_J2snFR10gn1F1Kj_7b1z7yuBuFStPNQKAYqlMH2C5HGa4sfm15Js4DcIA-Us0U63NnjETSvXvGUFCtL3YdKrFDOag9Yes841vxS_huOwOj1Y1ZNyHCWRlquKXXZgxP7XzhPTiRAPR6YDshsLr4G4" />
+            <div
+              class="absolute top-6 left-6 bg-primary-container/90 text-on-primary-container px-4 py-1 rounded-full text-label-md font-bold uppercase tracking-wider">
+              Comercial | Itaim</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE RECURSOS / DIFERENCIAIS TÉCNICOS: Apresentação de valores corporativos importantes -->
+    <section class="py-section-gap bg-surface-container-lowest">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+
+          <!-- Diferencial 1: Corte de Precisão -->
+          <div
+            class="p-10 bg-surface-container border border-outline-variant/10 rounded-lg reveal group hover:border-primary/50 transition-colors">
+            <span class="material-symbols-outlined text-primary text-4xl mb-6">precision_manufacturing</span>
+            <h3 class="font-headline-sm text-headline-sm mb-4">Corte de Precisão</h3>
+            <p class="text-on-surface-variant">Utilizamos tecnologia CNC de última geração para garantir encaixes
+              perfeitos e acabamentos milimétricos em cada peça.</p>
+          </div>
+
+          <!-- Diferencial 2: Variedade (Atraso dinâmico de 0.1s para revelação escalonada) -->
+          <div
+            class="p-10 bg-surface-container border border-outline-variant/10 rounded-lg reveal group hover:border-primary/50 transition-colors"
+            style="transition-delay: 0.1s">
+            <span class="material-symbols-outlined text-primary text-4xl mb-6">view_carousel</span>
+            <h3 class="font-headline-sm text-headline-sm mb-4">Variedade</h3>
+            <p class="text-on-surface-variant">Um catálogo vasto com as pedras mais nobres e raras do mundo, nacionais e
+              importadas para livre criação.</p>
+          </div>
+
+          <!-- Diferencial 3: Entrega (Atraso dinâmico de 0.2s) -->
+          <div
+            class="p-10 bg-surface-container border border-outline-variant/10 rounded-lg reveal group hover:border-primary/50 transition-colors"
+            style="transition-delay: 0.2s">
+            <span class="material-symbols-outlined text-primary text-4xl mb-6">local_shipping</span>
+            <h3 class="font-headline-sm text-headline-sm mb-4">Entrega</h3>
+            <p class="text-on-surface-variant">Logística própria especializada no transporte de materiais delicados,
+              garantindo integridade e pontualidade.</p>
+          </div>
+
+          <!-- Diferencial 4: Atendimento (Atraso dinâmico de 0.3s) -->
+          <div
+            class="p-10 bg-surface-container border border-outline-variant/10 rounded-lg reveal group hover:border-primary/50 transition-colors"
+            style="transition-delay: 0.3s">
+            <span class="material-symbols-outlined text-primary text-4xl mb-6">support_agent</span>
+            <h3 class="font-headline-sm text-headline-sm mb-4">Atendimento</h3>
+            <p class="text-on-surface-variant">Consultoria técnica dedicada para arquitetos e clientes finais, do
+              projeto à instalação final.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE DEPOIMENTOS DE CLIENTES (PROVA SOCIAL) -->
+    <section class="py-section-gap bg-surface overflow-hidden">
+      <div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+        <div class="text-center mb-16 reveal">
+          <span
+            class="text-primary font-label-md text-label-md uppercase tracking-[0.3em] mb-6 block">Depoimentos</span>
+          <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg">A Voz dos Nossos Clientes</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+
+          <!-- Depoimento 1: Mariana Silva -->
+          <div class="bg-surface-container-high p-12 rounded-lg relative reveal">
+            <!-- Ícone de aspas decorativo gigante posicionado no canto superior direito -->
+            <span class="material-symbols-outlined text-primary/20 text-8xl absolute top-8 right-8">format_quote</span>
+            <div class="flex gap-1 text-primary mb-6">
+              <!-- Estrelas de classificação preenchidas por configuração CSS inline -->
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-lg text-body-lg mb-8 italic">"A VR Stones elevou o nível do meu projeto. O acabamento do
+              Mármore Calacatta na minha cozinha é simplesmente impecável. Recomendo de olhos fechados!"</p>
+            <div>
+              <p class="font-bold text-on-surface">Mariana Silva</p>
+              <p class="text-on-surface-variant text-sm uppercase tracking-widest">Arquiteta | São Paulo</p>
+            </div>
+          </div>
+
+          <!-- Depoimento 2: Ricardo Mendonça (Atraso dinâmico de 0.2s) -->
+          <div class="bg-surface-container-high p-12 rounded-lg relative reveal" style="transition-delay: 0.2s">
+            <span class="material-symbols-outlined text-primary/20 text-8xl absolute top-8 right-8">format_quote</span>
+            <div class="flex gap-1 text-primary mb-6">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="font-body-lg text-body-lg mb-8 italic">"Atendimento diferenciado e prazo cumprido à risca. A
+              precisão dos cortes nas bancadas do banheiro foi impressionante."</p>
+            <div>
+              <p class="font-bold text-on-surface">Ricardo Mendonça</p>
+              <p class="text-on-surface-variant text-sm uppercase tracking-widest">Empresário | Barueri</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO DE CONTATO E ORÇAMENTO: Formulário funcional e contatos diretos (Endereço, Telefone, Email e WhatsApp) -->
+    <section class="py-section-gap bg-surface-container-lowest" id="contato">
+      <div
+        class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-20">
+
+        <!-- Coluna da Esquerda: Informações institucionais e canal direto no WhatsApp -->
+        <div class="reveal">
+          <span class="text-primary font-label-md text-label-md uppercase tracking-[0.3em] mb-6 block">Contato</span>
+          <h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-12">Vamos Iniciar Seu Próximo
+            Projeto?</h2>
+
+          <div class="space-y-8 mb-12">
+            <!-- Telefone -->
+            <div class="flex items-center gap-6 group">
+              <div
+                class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary transition-colors">
+                <span class="material-symbols-outlined text-primary">call</span>
+              </div>
+              <div>
+                <p class="text-on-surface-variant text-sm uppercase font-bold tracking-widest">Ligue para nós</p>
+                <p class="text-headline-sm font-headline-sm">+55 (24) 99975-1330</p>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="flex items-center gap-6 group">
+              <div
+                class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary transition-colors">
+                <span class="material-symbols-outlined text-primary">mail</span>
+              </div>
+              <div>
+                <p class="text-on-surface-variant text-sm uppercase font-bold tracking-widest">Email</p>
+                <p class="text-headline-sm font-headline-sm">contato@vrstones.com.br</p>
+              </div>
+            </div>
+            <!-- Endereço Físico -->
+            <div class="flex items-center gap-6 group">
+              <div
+                class="w-12 h-12 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary transition-colors">
+                <span class="material-symbols-outlined text-primary">location_on</span>
+              </div>
+              <div>
+                <p class="text-on-surface-variant text-sm uppercase font-bold tracking-widest">Endereço</p>
+                <p class="text-lg font-medium leading-snug">Av. Francisco Crisóstomos Tôrres, 2605<br>Pinto da Serra,
+                  Volta Redonda - RJ, 27286-440</p>
+              </div>
+            </div>
+          </div>
+          <!-- Botão de redirecionamento para o WhatsApp da marmoraria -->
+          <a class="inline-flex items-center gap-4 bg-primary-container text-on-primary-container px-10 py-5 rounded-full font-label-md text-label-md font-bold uppercase tracking-widest hover:scale-105 transition-transform"
+            href="https://wa.me/5524999751330" target="_blank">
+            WhatsApp <span class="material-symbols-outlined">chat</span>
+          </a>
+        </div>
+
+        <!-- Coluna da Direita: Formulário de Contato elegante com efeito de labels flutuantes nos inputs -->
+        <div class="bg-surface-container p-12 rounded-lg border border-outline-variant/10 reveal shadow-2xl">
+          <form class="space-y-10">
+            <!-- Input Nome com labels flutuantes (peer-placeholder-shown e peer-focus combinados) -->
+            <div class="relative group">
+              <input
+                class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 pt-4 pb-2 focus:ring-0 focus:border-primary transition-colors text-on-surface peer placeholder-transparent"
+                id="name" required="" type="text" />
+              <label
+                class="absolute left-0 top-0 text-on-surface-variant transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-xs peer-focus:text-primary uppercase font-bold tracking-widest"
+                for="name">Nome Completo</label>
+            </div>
+
+            <!-- Input Email -->
+            <div class="relative group">
+              <input
+                class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 pt-4 pb-2 focus:ring-0 focus:border-primary transition-colors text-on-surface peer placeholder-transparent"
+                id="email" required="" type="email" />
+              <label
+                class="absolute left-0 top-0 text-on-surface-variant transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-xs peer-focus:text-primary uppercase font-bold tracking-widest"
+                for="email">E-mail Corporativo</label>
+            </div>
+
+            <!-- Select Tipo de Projeto com estilização escura customizada -->
+            <div class="relative group">
+              <select
+                class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 pt-4 pb-2 focus:ring-0 focus:border-primary transition-colors text-on-surface peer appearance-none"
+                id="type">
+                <option class="bg-surface-container">Residencial</option>
+                <option class="bg-surface-container">Comercial</option>
+                <option class="bg-surface-container">Outros</option>
+              </select>
+              <label class="absolute left-0 -top-4 text-xs text-primary uppercase font-bold tracking-widest"
+                for="type">Tipo de Projeto</label>
+            </div>
+
+            <!-- Textarea Mensagem -->
+            <div class="relative group">
+              <textarea
+                class="w-full bg-transparent border-0 border-b-2 border-outline-variant/30 pt-4 pb-2 focus:ring-0 focus:border-primary transition-colors text-on-surface peer placeholder-transparent"
+                id="msg" required="" rows="4"></textarea>
+              <label
+                class="absolute left-0 top-0 text-on-surface-variant transition-all peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-focus:top-0 peer-focus:text-xs peer-focus:text-primary uppercase font-bold tracking-widest"
+                for="msg">Mensagem</label>
+            </div>
+
+            <!-- Botão Enviar -->
+            <button
+              class="w-full bg-primary-container text-on-primary-container py-5 rounded-full font-label-md text-label-md font-bold uppercase tracking-widest hover:opacity-90 transition-opacity"
+              type="submit">Enviar Solicitação</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ DA PÁGINA (FOOTER): Ambientação de luxo com tipografia gigante sutil em background -->
+  <footer
+    class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant w-full relative overflow-hidden">
+    <div
+      class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap grid grid-cols-1 md:grid-cols-4 gap-gutter relative z-10">
+
+      <!-- Coluna 1 & 2: Identidade Institucional, Redes Sociais e Descritivo -->
+      <div class="md:col-span-2">
+        <div
+          class="font-headline-xl text-5xl md:text-headline-xl font-black text-outline-variant/10 uppercase tracking-tighter mb-8 leading-none">
+          VR STONES</div>
+        <p class="font-body-md text-body-md text-on-surface-variant max-w-sm mb-8">
+          Elevando os padrões de marmoraria e marcenaria de luxo em todo o Brasil. Tecnologia alemã, pedras brasileiras
+          e italianas, execução impecável.
+        </p>
+        <!-- Links e ícones sociais com hover interativo de inversão de cores -->
+        <div class="flex gap-6">
+          <a class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all"
+            href="#">
+            <span class="material-symbols-outlined">share</span>
+          </a>
+          <a class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all"
+            href="https://www.instagram.com/vr_stonesmarmoraria/" target="_blank" title="Instagram">
+            <span class="material-symbols-outlined">photo_camera</span>
+          </a>
+          <a class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all"
+            href="#">
+            <span class="material-symbols-outlined">play_circle</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coluna 3: Links Rápidos de Navegação Interna -->
+      <div>
+        <h4 class="font-headline-sm text-headline-sm mb-6 text-on-surface">Links Rápidos</h4>
+        <ul class="space-y-4">
+          <li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+              href="#inicio">Navegação</a></li>
+          <li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+              href="#materiais">Materiais</a></li>
+          <li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+              href="#contato">Contato</a></li>
+          <li><a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
+              href="#">Redes Sociais</a></li>
+        </ul>
+      </div>
+
+      <!-- Coluna 4: Informações de Atendimento e Copyright -->
+      <div>
+        <h4 class="font-headline-sm text-headline-sm mb-6 text-on-surface">Horário</h4>
+        <p class="text-on-surface-variant font-body-md text-body-md mb-2">Seg - Sex: 08:30 - 18:30</p>
+        <p class="text-on-surface-variant font-body-md text-body-md mb-6">Sáb e Dom: Fechado</p>
+        <div class="pt-6 border-t border-outline-variant/20">
+          <p class="text-on-surface-variant text-xs opacity-50">© 2024 VR Stones. High-Tech Craftsmanship.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Texto Gigante Decorativo de Fundo no rodapé ("CRAFTSMANSHIP") com opacidade ultrabaixa para reforço visual -->
+    <div
+      class="absolute bottom-[-10%] left-[-5%] font-black text-[20vw] opacity-[0.02] pointer-events-none select-none text-white whitespace-nowrap">
+      CRAFTSMANSHIP</div>
+  </footer>
+
+  <!-- 
+      LOGICA JAVASCRIPT (VANILLA JS):
+      Desenvolvimento completo da interatividade do site sem dependência de frameworks externos pesados.
+    -->
+  <script>
+    // =====================================================================================
+    // Lógica do Cursor Customizado
+    // =====================================================================================
+    // Captura o elemento do cursor na tela
+    const cursor = document.getElementById('cursor');
+
+    // Atualiza a posição do círculo nas coordenadas exatas X e Y do cursor real do mouse
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // Adiciona e remove a classe "expand" ao passar o mouse sobre elementos interativos
+    document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+    });
+
+    // =====================================================================================
+    // Animação de Revelação de Palavra por Palavra (Hero Section)
+    // =====================================================================================
+    const heroTitle = document.querySelector('.word-reveal');
+    const text = heroTitle.textContent.trim();
+    heroTitle.textContent = ''; // Limpa o texto original
+
+    // Divide o texto por espaços e envolve cada palavra em um span individual com atrasos crescentes
+    text.split(' ').forEach((word, i) => {
+      const span = document.createElement('span');
+      span.textContent = word + ' ';
+      // Aplica um atraso dinâmico de 0.15s multiplicado pelo índice da palavra no texto
+      span.style.animationDelay = `${i * 0.15}s`;
+      heroTitle.appendChild(span);
+    });
+
+    // =====================================================================================
+    // Scroll Reveal e Animação de Contadores Estatísticos
+    // =====================================================================================
+    // Opções do Intersection Observer: Dispara quando pelo menos 10% do elemento estiver visível
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Adiciona a classe ativa para disparar o fade-in e transição CSS
+          entry.target.classList.add('active');
+
+          // Captura e inicializa os contadores numéricos dentro do elemento revelado
+          const counters = entry.target.querySelectorAll('[data-count]');
+          counters.forEach(counter => {
+            const target = +counter.getAttribute('data-count');
+            let current = 0;
+            const inc = target / 50; // Divide o incremento para rodar em 50 iterações (animação suave)
+
+            const update = () => {
+              if (current < target) {
+                current += inc;
+                // Adiciona sinal '+' ao lado dos números durante o incremento
+                counter.textContent = Math.ceil(current) + (target === 10 ? '+' : '+');
+                setTimeout(update, 30); // Próxima atualização em 30 milissegundos
+              } else {
+                counter.textContent = target + '+'; // Valor final cravado
+              }
+            };
+            update();
+          });
+        }
+      });
+    }, observerOptions);
+
+    // Aplica o observador em todos os contêineres com a classe ".reveal"
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // =====================================================================================
+    // Comportamento Dinâmico da Barra de Navegação no Scroll
+    // =====================================================================================
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('top-nav');
+      if (window.scrollY > 50) {
+        // Diminui a altura da navbar e aumenta a opacidade do fundo ao rolar a página
+        nav.classList.add('h-16', 'bg-surface/95');
+        nav.classList.remove('h-20');
+      } else {
+        // Restaura a altura inicial e desfoque nativo no topo absoluto da página
+        nav.classList.remove('h-16', 'bg-surface/95');
+        nav.classList.add('h-20');
+      }
+    });
+
+    // =====================================================================================
+    // Lógica do Carrossel e Filtragem do Catálogo de Materiais
+    // =====================================================================================
+    const filterContainer = document.getElementById('filter-buttons');
+    const catalogTrack = document.getElementById('catalog-track');
+    const catalogCards = document.querySelectorAll('#catalog-track .carousel-card');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+
+    let activeCards = Array.from(catalogCards); // Armazena a lista de cards atualmente visíveis (não filtrados)
+    let currentIndex = 0; // Índice de controle deslizante atual do carrossel
+
+    // Retorna a quantidade de cards visíveis simultaneamente na viewport com base nas media queries
+    function getVisibleCount() {
+      if (window.innerWidth > 1024) return 3; // Desktops grandes
+      if (window.innerWidth > 768) return 2;  // Tablets
+      return 1;                               // Celulares
+    }
+
+    // Atualiza a translação em pixels (X) do contêiner flexível do carrossel
+    function updateCarouselPosition() {
+      if (activeCards.length === 0 || !catalogTrack) return;
+
+      const visibleCount = getVisibleCount();
+
+      // Impede que o índice avance além do número total de cards menos os visíveis na tela
+      const maxIndex = Math.max(0, activeCards.length - visibleCount);
+      if (currentIndex > maxIndex) {
+        currentIndex = maxIndex;
+      }
+
+      const cardWidth = activeCards[0].getBoundingClientRect().width;
+      const gap = 24; // Valor do espaçamento em pixels definido inline no style gap
+      const translation = currentIndex * (cardWidth + gap);
+
+      // Move horizontalmente o trilho do carrossel no eixo X
+      catalogTrack.style.transform = `translateX(-${translation}px)`;
+
+      // Atualiza a opacidade e desativa cliques dos botões de setas nos limites de rolagem
+      if (prevBtn) {
+        if (currentIndex === 0) {
+          prevBtn.style.opacity = '0.3';
+          prevBtn.style.pointerEvents = 'none';
+        } else {
+          prevBtn.style.opacity = '1';
+          prevBtn.style.pointerEvents = 'auto';
+        }
+      }
+
+      if (nextBtn) {
+        if (currentIndex >= maxIndex) {
+          nextBtn.style.opacity = '0.3';
+          nextBtn.style.pointerEvents = 'none';
+        } else {
+          nextBtn.style.opacity = '1';
+          nextBtn.style.pointerEvents = 'auto';
+        }
+      }
+    }
+
+    // Vincula eventos de clique para a navegação do carrossel pelas setas
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarouselPosition();
+        }
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const visibleCount = getVisibleCount();
+        if (currentIndex < activeCards.length - visibleCount) {
+          currentIndex++;
+          updateCarouselPosition();
+        }
+      });
+    }
+
+    // Recalcula as proporções do carrossel sempre que a tela for redimensionada
+    window.addEventListener('resize', () => {
+      updateCarouselPosition();
+    });
+
+    // Pequeno atraso no carregamento inicial para assegurar renderização precisa dos tamanhos DOM
+    setTimeout(updateCarouselPosition, 100);
+
+    // Lógica de Filtragem de Categorias por Clique de Botão
+    if (filterContainer && catalogCards.length > 0) {
+      const buttons = filterContainer.querySelectorAll('button');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const category = btn.getAttribute('data-cat');
+
+          // Atualiza dinamicamente as classes utilitárias de estilo ativo/inativo nos botões
+          buttons.forEach(b => {
+            if (b === btn) {
+              b.className = "bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:opacity-90 transition-opacity";
+            } else {
+              b.className = "bg-surface-container-high text-on-surface px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-outline-variant/30 transition-colors";
+            }
+          });
+
+          // Filtra e aplica animação suave de fade-out/fade-in nos cards individuais
+          catalogCards.forEach(card => {
+            const cardCat = card.getAttribute('data-category');
+            if (category === 'todos' || cardCat === category) {
+              card.classList.remove('hidden-card');
+              card.style.opacity = '0';
+              card.style.transform = 'translateY(16px)';
+              card.offsetHeight; // Força reflow do navegador para reativar as transições CSS
+              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            } else {
+              card.classList.add('hidden-card');
+            }
+          });
+
+          // Recria a lista de cards ativos e zera o índice do carrossel para reiniciar o fluxo
+          activeCards = Array.from(catalogCards).filter(c => !c.classList.contains('hidden-card'));
+          currentIndex = 0;
+
+          // Redefine a rolagem inicial para a posição zero
+          if (catalogTrack) {
+            catalogTrack.style.transform = 'translateX(0px)';
+          }
+
+          // Executa o reposicionamento logo após o encerramento do ciclo de renderização do DOM
+          setTimeout(updateCarouselPosition, 50);
+        });
+      });
+    }
+
+    // =====================================================================================
+    // Lógica de Detalhes Dinâmicos por Modal
+    // =====================================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('material-modal');
+      const modalClose = document.getElementById('modal-close');
+      const modalContent = modal ? modal.querySelector('.relative') : null;
+
+      // Referências de elementos do DOM dentro do Modal
+      const modalImg = document.getElementById('modal-img');
+      const modalCategory = document.getElementById('modal-category');
+      const modalName = document.getElementById('modal-name');
+      const modalOrigin = document.getElementById('modal-origin');
+      const modalDesc = document.getElementById('modal-desc');
+      const modalPrice = document.getElementById('modal-price');
+      const modalUse = document.getElementById('modal-use');
+
+      // Abre o modal e preenche os dados dinamicamente com base nos atributos do card clicado
+      function openModal(data) {
+        if (!modal) return;
+
+        // População de elementos textuais e imagens
+        modalImg.src = data.img;
+        modalImg.alt = data.name;
+        modalCategory.textContent = data.categoryDisplay;
+        modalName.textContent = data.name;
+        modalOrigin.textContent = `Origem: ${data.origin}`;
+        modalDesc.textContent = data.desc;
+        modalPrice.textContent = data.price;
+        modalUse.textContent = data.use;
+
+        // Remove classe de ocultação e adiciona alinhamento Flex
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        // Dispara a animação suave de fade-in e scale-up do contêiner interno do modal
+        setTimeout(() => {
+          modal.classList.add('opacity-100');
+          if (modalContent) {
+            modalContent.classList.remove('scale-95', 'opacity-0');
+            modalContent.classList.add('scale-100', 'opacity-100');
+          }
+        }, 10);
+      }
+
+      // Executa o fechamento do modal com animações de fade-out e scale-down
+      function closeModal() {
+        if (!modal) return;
+
+        modal.classList.remove('opacity-100');
+        if (modalContent) {
+          modalContent.classList.remove('scale-100', 'opacity-100');
+          modalContent.classList.add('scale-95', 'opacity-0');
+        }
+
+        // Aguarda a duração da transição CSS (300ms) antes de ocultar o modal completamente do DOM
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }, 300);
+      }
+
+      // Vincula o disparador de clique em todos os botões de "Detalhes" dos cards de materiais
+      const detailButtons = document.querySelectorAll('.select-btn');
+      detailButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation(); // Impede propagação indesejada de eventos
+          const card = btn.closest('[data-name]');
+          if (!card) return;
+
+          // Mapeia todas as propriedades de metadados inseridas no card
+          const data = {
+            name: card.getAttribute('data-name'),
+            categoryDisplay: card.getAttribute('data-category-display'),
+            origin: card.getAttribute('data-origin'),
+            price: card.getAttribute('data-price'),
+            use: card.getAttribute('data-use'),
+            desc: card.getAttribute('data-desc'),
+            img: card.getAttribute('data-img')
+          };
+
+          openModal(data);
+        });
+      });
+
+      // Adiciona cliques para fechar o modal (no botão fechar 'X', fora do contêiner e no botão de CTA interno)
+      if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+      }
+
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+      }
+
+      const modalCta = document.getElementById('modal-cta');
+      if (modalCta) {
+        modalCta.addEventListener('click', closeModal);
+      }
+
+      // Associa a expansão do cursor personalizado aos botões dinâmicos do modal
+      if (typeof bindCursorHover === 'function') {
+        bindCursorHover(document.querySelectorAll('.select-btn, #modal-close, #modal-cta'));
+      } else {
+        document.querySelectorAll('.select-btn, #modal-close, #modal-cta').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+        });
+      }
+
+      // =====================================================================================
+      // Lógica do Menu Hambúrguer Móvel (Responsividade)
+      // =====================================================================================
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+      const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+      // Exibe o menu móvel com fade suave de opacidade
+      function openMobileMenu() {
+        if (!mobileMenuOverlay) return;
+        mobileMenuOverlay.classList.remove('hidden');
+        mobileMenuOverlay.classList.add('flex');
+        setTimeout(() => {
+          mobileMenuOverlay.classList.remove('opacity-0');
+          mobileMenuOverlay.classList.add('opacity-100');
+        }, 10);
+      }
+
+      // Esconde o menu móvel com fade-out
+      function closeMobileMenu() {
+        if (!mobileMenuOverlay) return;
+        mobileMenuOverlay.classList.remove('opacity-100');
+        mobileMenuOverlay.classList.add('opacity-0');
+        setTimeout(() => {
+          mobileMenuOverlay.classList.remove('flex');
+          mobileMenuOverlay.classList.add('hidden');
+        }, 300);
+      }
+
+      // Vincula os cliques de abertura e fechamento
+      if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+      if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+      mobileNavLinks.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+      });
+
+      // Associa a expansão do cursor personalizado aos elementos do menu móvel
+      if (typeof bindCursorHover === 'function') {
+        bindCursorHover(document.querySelectorAll('#mobile-menu-btn, #mobile-menu-close, .mobile-nav-link'));
+      } else {
+        document.querySelectorAll('#mobile-menu-btn, #mobile-menu-close, .mobile-nav-link').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+        });
+      }
+    });
+  </script>
+
+  <!-- MODAL GLOBAL DE EXIBIÇÃO DE DETALHES DE MATERIAL: Ocultado por padrão pelo estado `.hidden` -->
+  <div id="material-modal"
+    class="fixed inset-0 z-[1000] hidden items-center justify-center p-4 bg-[#0A0A0A]/85 backdrop-blur-md opacity-0 transition-opacity duration-300">
+    <div
+      class="relative bg-[#1A1A1A] border border-[#2A2A2A] rounded-2xl max-w-3xl w-full overflow-y-auto md:overflow-hidden shadow-2xl transition-all transform scale-95 opacity-0 duration-300 flex flex-col md:flex-row h-auto max-h-[90vh] md:max-h-[90vh]">
+
+      <!-- Botão Fechar Modal ("X" canto superior direito) -->
+      <button id="modal-close"
+        class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-[#111111] border border-[#2A2A2A] flex items-center justify-center text-white hover:text-[#00FF41] hover:border-[#00FF41] transition-all text-xl cursor-pointer">&times;</button>
+
+      <!-- Bloco Esquerdo: Visualizador de Imagem do Material com degradê de fusão -->
+      <div class="w-full md:w-1/2 h-48 md:h-auto min-h-[180px] md:min-h-[250px] relative overflow-hidden flex-shrink-0">
+        <img id="modal-img" src="" alt="" class="w-full h-full object-cover" />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-transparent to-transparent md:bg-gradient-to-r md:from-transparent md:to-[#1A1A1A]">
+        </div>
+      </div>
+
+      <!-- Bloco Direito: Detalhamento Técnico do Material e CTA -->
+      <div
+        class="w-full md:w-1/2 p-6 md:p-8 flex flex-col justify-between overflow-y-visible md:overflow-y-auto md:max-h-full">
+        <div>
+          <span id="modal-category"
+            class="inline-block bg-[rgba(0,255,65,0.1)] text-[#00FF41] rounded-full px-4 py-1 text-xs font-bold tracking-widest uppercase mb-4"></span>
+          <h2 id="modal-name" class="font-headline-sm text-headline-sm text-white mb-2"></h2>
+          <p id="modal-origin" class="text-on-surface-variant text-xs font-medium uppercase tracking-wider mb-6"></p>
+
+          <p id="modal-desc" class="text-on-surface-variant mb-6 text-sm leading-relaxed"></p>
+
+          <!-- Sessão de Preço Estimado e Recomendações Técnicas de Aplicação Arquitetônica -->
+          <div class="space-y-4 border-t border-[#2A2A2A] pt-6">
+            <div>
+              <span class="text-xs text-primary font-bold uppercase tracking-widest block mb-1">Preço Médio
+                Estimado</span>
+              <span id="modal-price" class="text-white text-base font-bold"></span>
+            </div>
+            <div>
+              <span class="text-xs text-primary font-bold uppercase tracking-widest block mb-1">Recomendações de
+                Uso</span>
+              <p id="modal-use" class="text-on-surface-variant text-xs leading-relaxed"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botão CTA Interno do Modal redirecionando para a seção de Contato -->
+        <a href="#contato" id="modal-cta"
+          class="mt-8 block bg-primary-container text-on-primary-container py-4 rounded-full font-label-md text-label-md font-bold text-center uppercase tracking-widest hover:scale-102 transition-transform shadow-[0px_4px_20px_rgba(0,255,65,0.2)]">
+          Solicitar Orçamento
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OVERLAY DO MENU MÓVEL DE NAVEGAÇÃO: Exibido em smartphones quando ativo -->
+  <div id="mobile-menu-overlay"
+    class="fixed inset-0 z-[2000] hidden flex-col bg-[#0A0A0A] p-8 transition-all duration-300 opacity-0">
+
+    <!-- Cabeçalho Interno do Menu Móvel com botão Fechar ("X") -->
+    <div class="flex justify-between items-center mb-12">
+      <a class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2 group" href="#">
+        <img alt="VR STONES Logo" class="h-10 w-auto"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCoCrHcyoercUQWH7kH3UOS5XO7DygJa6tfXi5HW2KoOXCM-Oxedo-fyTli5ukoVezM6GW80tII39X1Hp_RkAtJ1OGTYlQInpWQryYVP7Y-JzG_p57djrRHy8rS1tqtEurXBh0ruf7_qHY_-6U8YJkbTXquCHY7X2dzhb6V5HHvErSQoynWaCP0GUM2jyKOPEPCZwaww8YbGxhsDh_TA_lu2_uLj4LGwprpWcU7kvUujcWNHVlBk0OvMa0GMTlGjUVZ-rgM0a3Nq9m" />
+        <span class="tracking-tight uppercase">VR STONES</span>
+      </a>
+      <button id="mobile-menu-close"
+        class="text-on-surface hover:text-primary transition-colors focus:outline-none select-none">
+        <span class="material-symbols-outlined text-3xl">close</span>
+      </button>
+    </div>
+
+    <!-- Links de Navegação interna no celular -->
+    <div class="flex flex-col gap-8 text-center my-auto">
+      <a class="text-2xl font-headline-md font-medium text-on-surface hover:text-primary transition-colors py-2 mobile-nav-link"
+        href="#inicio">Início</a>
+      <a class="text-2xl font-headline-md font-medium text-on-surface hover:text-primary transition-colors py-2 mobile-nav-link"
+        href="#sobre">Sobre</a>
+      <a class="text-2xl font-headline-md font-medium text-on-surface hover:text-primary transition-colors py-2 mobile-nav-link"
+        href="#materiais">Materiais</a>
+      <a class="text-2xl font-headline-md font-medium text-on-surface hover:text-primary transition-colors py-2 mobile-nav-link"
+        href="#projetos">Projetos</a>
+      <a class="text-2xl font-headline-md font-medium text-on-surface hover:text-primary transition-colors py-2 mobile-nav-link"
+        href="#contato">Contato</a>
+    </div>
+
+    <!-- CTA Inferior no celular -->
+    <div class="mt-auto">
+      <a class="block w-full bg-primary-container text-on-primary-container py-5 rounded-full font-label-md text-label-md font-bold text-center uppercase tracking-widest hover:scale-102 transition-transform mobile-nav-link"
+        href="#contato">
+        Solicitar Orçamento
+      </a>
+    </div>
+
+  </div>
+</body>
+
+</html>
