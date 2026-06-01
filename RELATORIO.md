@@ -16,12 +16,12 @@ O objetivo do site é:
 ---
 
 ## 2. Arquitetura do Projeto
-O projeto adota a arquitetura de **Single-Page Application (SPA) Estática**, em que toda a interface é estruturada em um único arquivo autossuficiente (`index.html`). 
+O projeto adota a arquitetura de **Single-Page Application (SPA) Dinâmica e Desacoplada**. Enquanto a interface estrutural e o design do site estão centralizados no arquivo principal (`index.html`), o banco de dados do catálogo de produtos foi totalmente isolado em arquivos de dados externos (`materiais.json` e `materiais.js`).
 
 ### Benefícios dessa abordagem:
-1.  **Velocidade de Carregamento:** Sem requisições adicionais de páginas separadas. Os recursos principais são resolvidos imediatamente.
-2.  **Facilidade de Implantação (Deploy):** Por consistir de um arquivo HTML estático associado a ativos hospedados em CDNs seguras, o deploy pode ser feito em qualquer provedor de hospedagem de arquivos estáticos de maneira direta.
-3.  **Manutenibilidade Centralizada:** Facilita alterações rápidas em termos de marcação, estilo e lógica de script.
+1.  **Altíssima Escalabilidade:** Inclusão, remoção ou alteração de materiais no catálogo são feitas modificando apenas o arquivo JSON, sem tocar ou colocar em risco a integridade estrutural do HTML principal.
+2.  **Velocidade e Desempenho:** Carregamento inicial do HTML extremamente veloz graças ao menor volume de marcação rígida na página. Os recursos principais são resolvidos dinamicamente de forma assíncrona.
+3.  **Facilidade de Implantação (Deploy):** Todo o projeto permanece composto por ativos estáticos resolvidos no lado do cliente (Client-Side), permitindo deploy direto e de baixo custo em plataformas como GitHub Pages, Netlify ou Vercel.
 
 ---
 
@@ -85,20 +85,12 @@ Os materiais podem ser filtrados por categorias (Mármores, Granitos, Exóticos 
 *   Os cards correspondentes são revelados com transições suaves que modificam sua opacidade e translação de baixo para cima.
 *   A lista de cards ativos do carrossel (`activeCards`) é atualizada dinamicamente com base nos elementos visíveis, reiniciando o índice geral (`currentIndex = 0`) para a posição zero, permitindo que a navegação do carrossel funcione de forma fluida mesmo com subconjuntos reduzidos de materiais.
 
-### 5.4. Ponte de Dados via Atributos `data-*` e Modal de Detalhes
-Para evitar a replicação desnecessária de múltiplos elementos de modal ou chamadas em bases de dados externas, foi construído um sistema de **ponte de dados no DOM**:
-1.  Cada card do carrossel armazena os seus dados técnicos em formato de strings inseridas em atributos HTML:
-    *   `data-name`: Nome do material.
-    *   `data-category-display`: Categoria amigável para exibição.
-    *   `data-origin`: País de extração original do bloco.
-    *   `data-price`: Estimativa média de custo por metro quadrado.
-    *   `data-use`: Recomendações técnicas detalhadas de uso na arquitetura.
-    *   `data-desc`: Descrição conceitual do material.
-    *   `data-img`: Link de imagem associado.
-2.  Quando o botão "Detalhes" de um card é clicado, o JavaScript intercepta o evento, localiza o card pai mais próximo e captura todos esses atributos dinamicamente em um objeto de dados.
-3.  Estes valores são inseridos nos elementos HTML internos do modal global único (`#material-modal`).
-4.  O modal realiza a animação de abertura (fade-in de fundo com desfoque de vidro e aproximação suave de escala de `95%` para `100%`).
-5.  O fechamento é acionado ao clicar no botão "X", fora da área do conteúdo do modal ou no próprio botão interno de orçamento.
+### 5.4. Desacoplamento de Dados, Renderização Dinâmica e Modal de Detalhes
+Para garantir a escalabilidade e facilitar a inserção ou edição de produtos sem alterar o código de marcação (HTML), o projeto adota um modelo de **desacoplamento de banco de dados**:
+1.  **Armazenamento de Dados:** As informações completas de cada pedra (nome, categoria, origem, preço, descrição, imagem e recomendações de uso) estão centralizadas no arquivo [materiais.json](file:///c:/Users/joaop/antigravity%20projects/VR%20STONES%20LANDPAGE/materiais.json).
+2.  **Mapeamento e Fallback Offline:** A aplicação importa o arquivo complementar [materiais.js](file:///c:/Users/joaop/antigravity%20projects/VR%20STONES%20LANDPAGE/materiais.js) (que expõe a variável global `window.materiaisFallback`). A função assíncrona `carregarMateriais()` tenta obter os dados do JSON via `fetch`. Caso o arquivo seja aberto localmente sem servidor HTTP (protocolo `file://`), onde o navegador restringe requisições assíncronas por CORS, a aplicação realiza um fallback transparente e carrega a base offline instantaneamente, eliminando erros de visualização.
+3.  **Renderização de Peças no DOM:** O JavaScript processa os dados e cria os cards de materiais dinamicamente no contêiner `#catalog-track`. Durante essa injeção, cada card recebe seus respectivos atributos HTML (`data-name`, `data-category-display`, `data-origin`, `data-price`, `data-use`, `data-desc` e `data-img`).
+4.  **Abertura de Modal Técnica:** Ao clicar em "Detalhes" de um card, o JavaScript intercepta o evento, captura seus atributos dinâmicos e preenche o modal global único (`#material-modal`), que anima sua abertura aplicando efeitos de desfoque e escala suave de `95%` para `100%`. O fechamento é facilitado através do clique no botão "X", fora da área útil ou no botão de contato.
 
 ### 5.5. Menu Lateral Responsivo
 Em telas de dispositivos móveis, o menu clássico de navegação é ocultado, abrindo espaço para o ícone de hambúrguer. Ao ser acionado:
