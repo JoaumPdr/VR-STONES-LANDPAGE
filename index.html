@@ -547,258 +547,11 @@
 
         <!-- 
                   ESTRUTURA DE DADOS DO CARROSSEL:
-                  Cada card possui atributos `data-*` embutidos. Quando o usuário clica em "Detalhes", a lógica Javascript
-                  coleta esses dados e injeta no modal global de exibição estruturado no fim do arquivo.
+                  Os cards serão carregados dinamicamente via JavaScript a partir do arquivo materiais.json.
                 -->
         <div id="catalog-carousel-container" class="reveal">
           <div id="catalog-track" style="gap: 24px;">
-
-            <!-- CARD 1: Nero Marquina -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="marmore" data-name="Nero Marquina" data-category-display="Mármore" data-origin="Espanha"
-              data-price="R$ 1.200 / m²"
-              data-use="Revestimentos internos, banheiros, lavabos, lareiras e pisos de baixo tráfego. Evitar áreas externas ou cozinhas devido à acidez."
-              data-desc="Mármore negro de grão fino com veios brancos marcantes e reluzentes, extraído na Espanha. É sinônimo de elegância e sofisticação arquitetônica."
-              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAjHAqcvKGy9QCZViqPo1Uf_pQkz4AYvZ73jAFAv_6k3sE3QhWq4n_W_19PLDVJpSWTVjR_Ol0wv0U975PJfBcy9sCg9fl7LvN_GxSzbnbQd48POdcqPw8Jly46H3-1EAmBNdeVrxa_-1aypqmiCkv5Enj_Ler1S1l3KxcohaLYb8F2_rvqCb4OcO41PqBcC-G_BkMxRLBe3MDiS6WgCzwZV4zDRt92WBUirfSrFbFtBQQnQa9rctPqZDHjFI22Po8vOERE42Q62e4q">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjHAqcvKGy9QCZViqPo1Uf_pQkz4AYvZ73jAFAv_6k3sE3QhWq4n_W_19PLDVJpSWTVjR_Ol0wv0U975PJfBcy9sCg9fl7LvN_GxSzbnbQd48POdcqPw8Jly46H3-1EAmBNdeVrxa_-1aypqmiCkv5Enj_Ler1S1l3KxcohaLYb8F2_rvqCb4OcO41PqBcC-G_BkMxRLBe3MDiS6WgCzwZV4zDRt92WBUirfSrFbFtBQQnQa9rctPqZDHjFI22Po8vOERE42Q62e4q"
-                alt="Nero Marquina" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
-                <h3 class="font-headline-sm text-headline-sm">Nero Marquina</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 2: Calacatta Gold -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="marmore" data-name="Calacatta Gold" data-category-display="Mármore" data-origin="Itália"
-              data-price="R$ 3.800 / m²"
-              data-use="Áreas internas de alto padrão, painéis decorativos, banheiros de luxo e tampos de lavatórios. Evitar uso em cozinhas."
-              data-desc="Mármore nobre de fundo branco puro com veios marcantes em tons cinza e detalhes dourados. Uma das pedras mais raras do mundo."
-              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuC70Td--VqM7dJj3iI5c5vc5IottF5vs3AiXkzmvEWoLyPT4H1pzjw0cB14eh2uWcq4OfxTM1R8gHfz6b1-CwRaV8G-rX7xvYpcjWe38GeugKCDm-5l5o2JNG8EfacoyB0wTdrdp4S9m46dyuD3aNy_FrrQ3nVnJ9y0RyVQuuZF6NZ9-NLWsHAiwFkn4G4mTOqqZjuKZd0feVrczvqH_gdWyAolpGeKE4t90DbbxHWewBBCZVaYyOH1qDy0epzy5D0-VCurK7SveMf_">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC70Td--VqM7dJj3iI5c5vc5IottF5vs3AiXkzmvEWoLyPT4H1pzjw0cB14eh2uWcq4OfxTM1R8gHfz6b1-CwRaV8G-rX7xvYpcjWe38GeugKCDm-5l5o2JNG8EfacoyB0wTdrdp4S9m46dyuD3aNy_FrrQ3nVnJ9y0RyVQuuZF6NZ9-NLWsHAiwFkn4G4mTOqqZjuKZd0feVrczvqH_gdWyAolpGeKE4t90DbbxHWewBBCZVaYyOH1qDy0epzy5D0-VCurK7SveMf_"
-                alt="Calacatta Gold" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
-                <h3 class="font-headline-sm text-headline-sm">Calacatta Gold</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 3: Verde Guatemala -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="exoticos" data-name="Verde Guatemala" data-category-display="Exótico"
-              data-origin="Guatemala" data-price="R$ 1.500 / m²"
-              data-use="Paredes decorativas, tampos de lavabo, bordas de piscina, lareiras e detalhes ornamentais. Excelente durabilidade interna."
-              data-desc="Rocha exótica de cor verde-escura profunda com veios negros intensos que lembram florestas tropicais. Altíssimo apelo estético."
-              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuA99SRMZN15HdAdDuHfgC7B4FwtiRIIgbBoHPTEQt_Wc_cQj9BjcweDfzN2oazz13CTLQUYwL4TYsC2VEP46ap_kS4mzESzzBAQpHFPp969qVdcoQlXmf8ErvS4DCyp7IPMc-b6E4Y-VbTFSMECedKgD4lAXCxWIbfWln0FJnsyjZ1O610Zc_bKKftD4LkwPzVKOuBDZ8IIu4n4I1HxIM_zUeDSm1myQ9dP3bovFgpt6mUDkZJby4GAMqrI2X5yG6jkEFcH2OBq_fiF">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA99SRMZN15HdAdDuHfgC7B4FwtiRIIgbBoHPTEQt_Wc_cQj9BjcweDfzN2oazz13CTLQUYwL4TYsC2VEP46ap_kS4mzESzzBAQpHFPp969qVdcoQlXmf8ErvS4DCyp7IPMc-b6E4Y-VbTFSMECedKgD4lAXCxWIbfWln0FJnsyjZ1O610Zc_bKKftD4LkwPzVKOuBDZ8IIu4n4I1HxIM_zUeDSm1myQ9dP3bovFgpt6mUDkZJby4GAMqrI2X5yG6jkEFcH2OBq_fiF"
-                alt="Verde Guatemala" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Exótico</span>
-                <h3 class="font-headline-sm text-headline-sm">Verde Guatemala</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 4: Carrara Gioia -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="marmore" data-name="Carrara Gioia" data-category-display="Mármore" data-origin="Itália"
-              data-price="R$ 1.800 / m²"
-              data-use="Pisos internos, escadas residenciais, banheiros de luxo e tampos integrados."
-              data-desc="Mármore italiano clássico de fundo branco brilhante com delicados veios cinzentos ramificados. O maior clássico atemporal da arquitetura."
-              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAVBonqFYFwBBZespu5p056JgBDHCV51vAwY99nOqnVnWtoDRPLZRp1GV7t-o2Oh-gpEKZDtVvzomgUYxX-0wQCi5J8gKwXhBEC_9ZCnqc2tiEFSh9_C5v5RCa2LipM62DV3ARy08ThrBpYUVT7r2ZqyLgZuzbaPnudVefXqoahX4IVT74cBUWnWyCzapmbPtaUbRiptxeLZyUxzKfvsOO6Z2w6FDSJSKiyeC00tnLyglPAPWP5RlMIv0V30ulgiLaj1jWxjA_1IgCY">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVBonqFYFwBBZespu5p056JgBDHCV51vAwY99nOqnVnWtoDRPLZRp1GV7t-o2Oh-gpEKZDtVvzomgUYxX-0wQCi5J8gKwXhBEC_9ZCnqc2tiEFSh9_C5v5RCa2LipM62DV3ARy08ThrBpYUVT7r2ZqyLgZuzbaPnudVefXqoahX4IVT74cBUWnWyCzapmbPtaUbRiptxeLZyUxzKfvsOO6Z2w6FDSJSKiyeC00tnLyglPAPWP5RlMIv0V30ulgiLaj1jWxjA_1IgCY"
-                alt="Carrara Gioia" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
-                <h3 class="font-headline-sm text-headline-sm">Carrara Gioia</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 5: Travertino Romano -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="marmore" data-name="Travertino Romano" data-category-display="Clássico"
-              data-origin="Itália" data-price="R$ 1.400 / m²"
-              data-use="Revestimentos de paredes internas e externas, pisos internos e áreas secas residenciais. Requer impermeabilização em banheiros."
-              data-desc="Rocha calcária sedimentar de tons beges e textura rústica com cavidades naturais. Utilizada desde a antiguidade em tempos romanos."
-              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuB8tMhOJTVlhy0myJ4fzcCUuEifqQ9v_19vGUPS-lFx-H3TcFs-yBR-_DlHpB-bPymjdDZWRZdLsoOnVNWPsJqI8EHlxmrOSvMQMw2o1nn8yILjGJk8sVTNK4xiMyULBkFA_TmjnEMZT0gii2Da3F6QQnutBpReU2nikH-F5doxRuQfN-DFjBXwgI0GJBKGlTj-2GbalqjpLzESLCU0eDQrZZtQHsX61UFgNC1fy1XS8U_xapWWTK6Q-wCpPWMYw3J_3lVDtQggBV8E">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8tMhOJTVlhy0myJ4fzcCUuEifqQ9v_19vGUPS-lFx-H3TcFs-yBR-_DlHpB-bPymjdDZWRZdLsoOnVNWPsJqI8EHlxmrOSvMQMw2o1nn8yILjGJk8sVTNK4xiMyULBkFA_TmjnEMZT0gii2Da3F6QQnutBpReU2nikH-F5doxRuQfN-DFjBXwgI0GJBKGlTj-2GbalqjpLzESLCU0eDQrZZtQHsX61UFgNC1fy1XS8U_xapWWTK6Q-wCpPWMYw3J_3lVDtQggBV8E"
-                alt="Travertino Romano" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Clássico</span>
-                <h3 class="font-headline-sm text-headline-sm">Travertino Romano</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 6: Preto Absoluto -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="granitos" data-name="Preto Absoluto" data-category-display="Granito" data-origin="Brasil"
-              data-price="R$ 950 / m²"
-              data-use="Bancadas de cozinha, áreas gourmet de alto padrão, escadas residenciais, tampos de alto tráfego e pisos externos resistentes."
-              data-desc="Granito brasileiro nobre de granulação finíssima e cor preta homogênea absoluta. Oferece altíssima resistência a riscos, calor e manchas cotidianas."
-              data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAtwvKH8hD2wb4SuuAMzmdb3Hhi4hmxqsl3HW_jPaKGUDebwTqzH5chGOPgrxCQXcInNWnuuXjeKb9rnZGthKwTrYGf_NSFxqm_E4gSnGlrUdt9NbE091g3Spj922mSrbJ1_P15V6ncXwCD1d0emLYMXCL_wsyvW7iM5YPJaSgkLYMYNl1Px88CZ2XkBIN7bE_fEWtoZZgtfhwe6hI8_VHYgoskxBHk6Ye-aCIn_4-vVflaD3DI8uofHNg1ZUKJfsUBykdROTUB9hIA">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtwvKH8hD2wb4SuuAMzmdb3Hhi4hmxqsl3HW_jPaKGUDebwTqzH5chGOPgrxCQXcInNWnuuXjeKb9rnZGthKwTrYGf_NSFxqm_E4gSnGlrUdt9NbE091g3Spj922mSrbJ1_P15V6ncXwCD1d0emLYMXCL_wsyvW7iM5YPJaSgkLYMYNl1Px88CZ2XkBIN7bE_fEWtoZZgtfhwe6hI8_VHYgoskxBHk6Ye-aCIn_4-vVflaD3DI8uofHNg1ZUKJfsUBykdROTUB9hIA"
-                alt="Preto Absoluto" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Granito</span>
-                <h3 class="font-headline-sm text-headline-sm">Preto Absoluto</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 7: Arabescato Corchia -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="marmore" data-name="Arabescato Corchia" data-category-display="Mármore"
-              data-origin="Itália" data-price="R$ 2.400 / m²"
-              data-use="Revestimentos de banheiros, tampos de aparadores, lareiras de luxo e revestimentos internos nobres."
-              data-desc="Mármore brechado italiano com fundo branco-creme e veios cinzas e pretos arredondados ricamente entrelaçados. Obra-prima natural."
-              data-img="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600" alt="Arabescato Corchia" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Mármore</span>
-                <h3 class="font-headline-sm text-headline-sm">Arabescato</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 8: Super White -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="exoticos" data-name="Super White" data-category-display="Quartzito" data-origin="Brasil"
-              data-price="R$ 1.950 / m²"
-              data-use="Bancadas gourmet, tampos de jantar, revestimentos de parede e ilhas integradas de alta resistência."
-              data-desc="Quartzito natural brasileiro que une a estética luxuosa do mármore Carrara com a altíssima dureza e resistência a riscos e ácidos do granito."
-              data-img="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=600">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=600" alt="Super White" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Quartzito</span>
-                <h3 class="font-headline-sm text-headline-sm">Super White</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 9: Cinza Platina -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="granitos" data-name="Cinza Platina" data-category-display="Granito" data-origin="Brasil"
-              data-price="R$ 780 / m²"
-              data-use="Pisos comerciais, garagens, calçadas residenciais de alto tráfego e bancadas funcionais de alta durabilidade."
-              data-desc="Granito brasileiro altamente homogêneo de textura fina e cor cinza-metálica marcante. Extremamente estável e resiliente contra intempéries."
-              data-img="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600" alt="Cinza Platina" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Granito</span>
-                <h3 class="font-headline-sm text-headline-sm">Cinza Platina</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
-            <!-- CARD 10: Ônix Miel -->
-            <div
-              class="carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20"
-              data-category="exoticos" data-name="Ônix Miel" data-category-display="Exótico" data-origin="México"
-              data-price="R$ 4.500 / m²"
-              data-use="Painéis de parede retroiluminados, balcões de recepção de alto padrão e tampos decorativos de bares."
-              data-desc="Rocha semipreciosa translúcida de cor mel dourada exuberante. Cria efeitos luminosos espetaculares sob incidência traseira de luz LED."
-              data-img="https://images.unsplash.com/photo-1565117131175-b436faca5ad4?w=600">
-              <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                src="https://images.unsplash.com/photo-1565117131175-b436faca5ad4?w=600" alt="Ônix Miel" />
-              <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80">
-              </div>
-              <div class="absolute bottom-6 left-6">
-                <span
-                  class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">Exótico</span>
-                <h3 class="font-headline-sm text-headline-sm">Ônix Miel</h3>
-              </div>
-              <div
-                class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
-                <button
-                  class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
-              </div>
-            </div>
-
+            <!-- Os cards do catálogo serão carregados dinamicamente via JS a partir do arquivo materiais.json -->
           </div>
         </div>
       </div>
@@ -1145,6 +898,9 @@
       CRAFTSMANSHIP</div>
   </footer>
 
+  <!-- Banco de dados offline para evitar restrições de CORS locais (file://) -->
+  <script src="./materiais.js"></script>
+
   <!-- 
       LOGICA JAVASCRIPT (VANILLA JS):
       Desenvolvimento completo da interatividade do site sem dependência de frameworks externos pesados.
@@ -1241,18 +997,76 @@
     });
 
     // =====================================================================================
-    // Lógica do Carrossel e Filtragem do Catálogo de Materiais
+    // Lógica do Carrossel, Filtragem e Carregamento Dinâmico do Catálogo de Materiais
     // =====================================================================================
-    const filterContainer = document.getElementById('filter-buttons');
-    const catalogTrack = document.getElementById('catalog-track');
-    const catalogCards = document.querySelectorAll('#catalog-track .carousel-card');
-    const prevBtn = document.getElementById('carousel-prev');
-    const nextBtn = document.getElementById('carousel-next');
+    let activeCards = [];
+    let currentIndex = 0;
+    let catalogCards = [];
 
-    let activeCards = Array.from(catalogCards); // Armazena a lista de cards atualmente visíveis (não filtrados)
-    let currentIndex = 0; // Índice de controle deslizante atual do carrossel
+    // Função assíncrona para buscar e renderizar os materiais do JSON
+    async function carregarMateriais() {
+      try {
+        // Tenta carregar os dados assincronamente a partir do JSON externo
+        const response = await fetch('./materiais.json');
+        if (!response.ok) throw new Error('Não foi possível carregar o arquivo materiais.json');
+        const materiais = await response.json();
+        renderizarMateriais(materiais);
+      } catch (error) {
+        console.warn("Falha ao carregar materiais.json (provavelmente bloqueado por CORS local/file://). Usando fallback offline do materiais.js:", error);
+        
+        // Tenta usar o fallback offline
+        if (window.materiaisFallback && window.materiaisFallback.length > 0) {
+          renderizarMateriais(window.materiaisFallback);
+        } else {
+          console.error("Erro crítico: Nenhum banco de dados offline de fallback encontrado.", error);
+          const catalogTrack = document.getElementById('catalog-track');
+          if (catalogTrack) {
+            catalogTrack.innerHTML = `<p class="text-error font-body-lg p-6 w-full text-center">Falha ao carregar o catálogo de materiais. Por favor, recarregue a página.</p>`;
+          }
+        }
+      }
+    }
 
-    // Retorna a quantidade de cards visíveis simultaneamente na viewport com base nas media queries
+    // Renderiza dinamicamente os cards de materiais no contêiner do carrossel
+    function renderizarMateriais(materiais) {
+      const catalogTrack = document.getElementById('catalog-track');
+      if (!catalogTrack) return;
+      
+      catalogTrack.innerHTML = ''; // Limpa o carregador ou itens antigos
+      
+      materiais.forEach(item => {
+        const card = document.createElement('div');
+        card.className = "carousel-card group relative aspect-square bg-surface-container overflow-hidden rounded-lg border border-outline-variant/20";
+        card.setAttribute('data-category', item.categoria);
+        card.setAttribute('data-name', item.nome);
+        card.setAttribute('data-category-display', item.categoria_exibicao);
+        card.setAttribute('data-origin', item.origem);
+        card.setAttribute('data-price', item.preco);
+        card.setAttribute('data-use', item.recomendacao_uso);
+        card.setAttribute('data-desc', item.descricao);
+        card.setAttribute('data-img', item.imagem);
+
+        card.innerHTML = `
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            src="${item.imagem}" alt="${item.nome}" />
+          <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-80"></div>
+          <div class="absolute bottom-6 left-6">
+            <span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-2 block">${item.categoria_exibicao}</span>
+            <h3 class="font-headline-sm text-headline-sm">${item.nome}</h3>
+          </div>
+          <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[#0A0A0A]/60 backdrop-blur-sm">
+            <button class="bg-primary-container text-on-primary-container px-6 py-3 rounded-full font-label-md text-label-md font-bold uppercase tracking-wider scale-90 group-hover:scale-100 transition-all duration-300 select-btn">Detalhes</button>
+          </div>
+        `;
+        
+        catalogTrack.appendChild(card);
+      });
+
+      // Configura referências e inicializa lógica de interação
+      inicializarCatalogo();
+    }
+
+    // Retorna a quantidade de cards visíveis simultaneamente na viewport
     function getVisibleCount() {
       if (window.innerWidth > 1024) return 3; // Desktops grandes
       if (window.innerWidth > 768) return 2;  // Tablets
@@ -1261,24 +1075,24 @@
 
     // Atualiza a translação em pixels (X) do contêiner flexível do carrossel
     function updateCarouselPosition() {
+      const catalogTrack = document.getElementById('catalog-track');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      
       if (activeCards.length === 0 || !catalogTrack) return;
 
       const visibleCount = getVisibleCount();
-
-      // Impede que o índice avance além do número total de cards menos os visíveis na tela
       const maxIndex = Math.max(0, activeCards.length - visibleCount);
       if (currentIndex > maxIndex) {
         currentIndex = maxIndex;
       }
 
       const cardWidth = activeCards[0].getBoundingClientRect().width;
-      const gap = 24; // Valor do espaçamento em pixels definido inline no style gap
+      const gap = 24; // Espaçamento entre os cards
       const translation = currentIndex * (cardWidth + gap);
 
-      // Move horizontalmente o trilho do carrossel no eixo X
       catalogTrack.style.transform = `translateX(-${translation}px)`;
 
-      // Atualiza a opacidade e desativa cliques dos botões de setas nos limites de rolagem
       if (prevBtn) {
         if (currentIndex === 0) {
           prevBtn.style.opacity = '0.3';
@@ -1300,79 +1114,124 @@
       }
     }
 
-    // Vincula eventos de clique para a navegação do carrossel pelas setas
-    if (prevBtn) {
-      prevBtn.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateCarouselPosition();
-        }
-      });
-    }
+    function inicializarCatalogo() {
+      const filterContainer = document.getElementById('filter-buttons');
+      const catalogTrack = document.getElementById('catalog-track');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      
+      catalogCards = document.querySelectorAll('#catalog-track .carousel-card');
+      activeCards = Array.from(catalogCards);
+      currentIndex = 0;
 
-    if (nextBtn) {
-      nextBtn.addEventListener('click', () => {
-        const visibleCount = getVisibleCount();
-        if (currentIndex < activeCards.length - visibleCount) {
-          currentIndex++;
-          updateCarouselPosition();
-        }
-      });
-    }
-
-    // Recalcula as proporções do carrossel sempre que a tela for redimensionada
-    window.addEventListener('resize', () => {
-      updateCarouselPosition();
-    });
-
-    // Pequeno atraso no carregamento inicial para assegurar renderização precisa dos tamanhos DOM
-    setTimeout(updateCarouselPosition, 100);
-
-    // Lógica de Filtragem de Categorias por Clique de Botão
-    if (filterContainer && catalogCards.length > 0) {
-      const buttons = filterContainer.querySelectorAll('button');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const category = btn.getAttribute('data-cat');
-
-          // Atualiza dinamicamente as classes utilitárias de estilo ativo/inativo nos botões
-          buttons.forEach(b => {
-            if (b === btn) {
-              b.className = "bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:opacity-90 transition-opacity";
-            } else {
-              b.className = "bg-surface-container-high text-on-surface px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-outline-variant/30 transition-colors";
-            }
-          });
-
-          // Filtra e aplica animação suave de fade-out/fade-in nos cards individuais
-          catalogCards.forEach(card => {
-            const cardCat = card.getAttribute('data-category');
-            if (category === 'todos' || cardCat === category) {
-              card.classList.remove('hidden-card');
-              card.style.opacity = '0';
-              card.style.transform = 'translateY(16px)';
-              card.offsetHeight; // Força reflow do navegador para reativar as transições CSS
-              card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-              card.style.opacity = '1';
-              card.style.transform = 'translateY(0)';
-            } else {
-              card.classList.add('hidden-card');
-            }
-          });
-
-          // Recria a lista de cards ativos e zera o índice do carrossel para reiniciar o fluxo
-          activeCards = Array.from(catalogCards).filter(c => !c.classList.contains('hidden-card'));
-          currentIndex = 0;
-
-          // Redefine a rolagem inicial para a posição zero
-          if (catalogTrack) {
-            catalogTrack.style.transform = 'translateX(0px)';
+      // Vincula eventos de clique para a navegação do carrossel pelas setas
+      if (prevBtn) {
+        const newPrevBtn = prevBtn.cloneNode(true);
+        prevBtn.parentNode.replaceChild(newPrevBtn, prevBtn);
+        newPrevBtn.addEventListener('click', () => {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarouselPosition();
           }
+        });
+      }
+      if (nextBtn) {
+        const newNextBtn = nextBtn.cloneNode(true);
+        nextBtn.parentNode.replaceChild(newNextBtn, nextBtn);
+        newNextBtn.addEventListener('click', () => {
+          const visibleCount = getVisibleCount();
+          if (currentIndex < activeCards.length - visibleCount) {
+            currentIndex++;
+            updateCarouselPosition();
+          }
+        });
+      }
 
-          // Executa o reposicionamento logo após o encerramento do ciclo de renderização do DOM
-          setTimeout(updateCarouselPosition, 50);
+      // Configura redimensionamento da janela
+      window.removeEventListener('resize', updateCarouselPosition);
+      window.addEventListener('resize', updateCarouselPosition);
+      
+      // Reposiciona o carrossel inicialmente
+      setTimeout(updateCarouselPosition, 100);
+
+      // Lógica de Filtragem de Categorias
+      if (filterContainer && catalogCards.length > 0) {
+        const buttons = filterContainer.querySelectorAll('button');
+        buttons.forEach(btn => {
+          const newBtn = btn.cloneNode(true);
+          btn.parentNode.replaceChild(newBtn, btn);
+          
+          newBtn.addEventListener('click', () => {
+            const category = newBtn.getAttribute('data-cat');
+
+            // Atualiza classes ativas/inativas
+            filterContainer.querySelectorAll('button').forEach(b => {
+              if (b === newBtn) {
+                b.className = "bg-primary-container text-on-primary-container px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:opacity-90 transition-opacity";
+              } else {
+                b.className = "bg-surface-container-high text-on-surface px-6 py-2 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-outline-variant/30 transition-colors";
+              }
+            });
+
+            // Filtra os cards
+            catalogCards.forEach(card => {
+              const cardCat = card.getAttribute('data-category');
+              if (category === 'todos' || cardCat === category) {
+                card.classList.remove('hidden-card');
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(16px)';
+                card.offsetHeight; // Força reflow
+                card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+              } else {
+                card.classList.add('hidden-card');
+              }
+            });
+
+            activeCards = Array.from(catalogCards).filter(c => !c.classList.contains('hidden-card'));
+            currentIndex = 0;
+
+            if (catalogTrack) {
+              catalogTrack.style.transform = 'translateX(0px)';
+            }
+            setTimeout(updateCarouselPosition, 50);
+          });
+        });
+      }
+
+      // Vincula cliques para abrir o modal de detalhes nos botões seletivos dinâmicos
+      const detailButtons = document.querySelectorAll('.select-btn');
+      detailButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const card = btn.closest('[data-name]');
+          if (!card) return;
+
+          const data = {
+            name: card.getAttribute('data-name'),
+            categoryDisplay: card.getAttribute('data-category-display'),
+            origin: card.getAttribute('data-origin'),
+            price: card.getAttribute('data-price'),
+            use: card.getAttribute('data-use'),
+            desc: card.getAttribute('data-desc'),
+            img: card.getAttribute('data-img')
+          };
+
+          if (window.openModal) {
+            window.openModal(data);
+          }
         });
       });
+
+      // Associa a expansão do cursor personalizado aos botões dinâmicos recém-criados
+      const cursor = document.getElementById('cursor');
+      if (cursor) {
+        document.querySelectorAll('.select-btn, #carousel-prev, #carousel-next, #filter-buttons button').forEach(el => {
+          el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+          el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+        });
+      }
     }
 
     // =====================================================================================
@@ -1392,8 +1251,8 @@
       const modalPrice = document.getElementById('modal-price');
       const modalUse = document.getElementById('modal-use');
 
-      // Abre o modal e preenche os dados dinamicamente com base nos atributos do card clicado
-      function openModal(data) {
+      // Abre o modal e preenche os dados dinamicamente com base nos atributos do card clicado (exposta globalmente)
+      window.openModal = function(data) {
         if (!modal) return;
 
         // População de elementos textuais e imagens
@@ -1418,7 +1277,7 @@
             modalContent.classList.add('scale-100', 'opacity-100');
           }
         }, 10);
-      }
+      };
 
       // Executa o fechamento do modal com animações de fade-out e scale-down
       function closeModal() {
@@ -1436,29 +1295,6 @@
           modal.classList.remove('flex');
         }, 300);
       }
-
-      // Vincula o disparador de clique em todos os botões de "Detalhes" dos cards de materiais
-      const detailButtons = document.querySelectorAll('.select-btn');
-      detailButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation(); // Impede propagação indesejada de eventos
-          const card = btn.closest('[data-name]');
-          if (!card) return;
-
-          // Mapeia todas as propriedades de metadados inseridas no card
-          const data = {
-            name: card.getAttribute('data-name'),
-            categoryDisplay: card.getAttribute('data-category-display'),
-            origin: card.getAttribute('data-origin'),
-            price: card.getAttribute('data-price'),
-            use: card.getAttribute('data-use'),
-            desc: card.getAttribute('data-desc'),
-            img: card.getAttribute('data-img')
-          };
-
-          openModal(data);
-        });
-      });
 
       // Adiciona cliques para fechar o modal (no botão fechar 'X', fora do contêiner e no botão de CTA interno)
       if (modalClose) {
@@ -1478,15 +1314,11 @@
         modalCta.addEventListener('click', closeModal);
       }
 
-      // Associa a expansão do cursor personalizado aos botões dinâmicos do modal
-      if (typeof bindCursorHover === 'function') {
-        bindCursorHover(document.querySelectorAll('.select-btn, #modal-close, #modal-cta'));
-      } else {
-        document.querySelectorAll('.select-btn, #modal-close, #modal-cta').forEach(el => {
-          el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-        });
-      }
+      // Associa a expansão do cursor personalizado aos botões estáticos do modal
+      document.querySelectorAll('#modal-close, #modal-cta').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+      });
 
       // =====================================================================================
       // Lógica do Menu Hambúrguer Móvel (Responsividade)
@@ -1526,14 +1358,15 @@
       });
 
       // Associa a expansão do cursor personalizado aos elementos do menu móvel
-      if (typeof bindCursorHover === 'function') {
-        bindCursorHover(document.querySelectorAll('#mobile-menu-btn, #mobile-menu-close, .mobile-nav-link'));
-      } else {
-        document.querySelectorAll('#mobile-menu-btn, #mobile-menu-close, .mobile-nav-link').forEach(el => {
-          el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-          el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-        });
-      }
+      document.querySelectorAll('#mobile-menu-btn, #mobile-menu-close, .mobile-nav-link').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+      });
+
+      // =====================================================================================
+      // Dispara o carregamento assíncrono dos materiais a partir do arquivo JSON
+      // =====================================================================================
+      carregarMateriais();
     });
   </script>
 

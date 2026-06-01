@@ -1,0 +1,103 @@
+// Fallback offline para carregar o catálogo de materiais mesmo quando aberto via protocolo file:// (duplo clique local no navegador)
+window.materiaisFallback = [
+  {
+    "nome": "Nero Marquina",
+    "categoria": "marmore",
+    "categoria_exibicao": "Mármore",
+    "origem": "Espanha",
+    "preco": "R$ 1.200 / m²",
+    "descricao": "Mármore negro de grão fino com veios brancos marcantes e reluzentes, extraído na Espanha. É sinônimo de elegância e sofisticação arquitetônica.",
+    "imagem": "https://lh3.googleusercontent.com/aida-public/AB6AXuAjHAqcvKGy9QCZViqPo1Uf_pQkz4AYvZ73jAFAv_6k3sE3QhWq4n_W_19PLDVJpSWTVjR_Ol0wv0U975PJfBcy9sCg9fl7LvN_GxSzbnbQd48POdcqPw8Jly46H3-1EAmBNdeVrxa_-1aypqmiCkv5Enj_Ler1S1l3KxcohaLYb8F2_rvqCb4OcO41PqBcC-G_BkMxRLBe3MDiS6WgCzwZV4zDRt92WBUirfSrFbFtBQQnQa9rctPqZDHjFI22Po8vOERE42Q62e4q",
+    "recomendacao_uso": "Revestimentos internos, banheiros, lavabos, lareiras e pisos de baixo tráfego. Evitar áreas externas ou cozinhas devido à acidez."
+  },
+  {
+    "nome": "Calacatta Gold",
+    "categoria": "marmore",
+    "categoria_exibicao": "Mármore",
+    "origem": "Itália",
+    "preco": "R$ 3.800 / m²",
+    "descricao": "Mármore nobre de fundo branco puro com veios marcantes em tons cinza e detalhes dourados. Uma das pedras mais raras do mundo.",
+    "imagem": "https://lh3.googleusercontent.com/aida-public/AB6AXuC70Td--VqM7dJj3iI5c5vc5IottF5vs3AiXkzmvEWoLyPT4H1pzjw0cB14eh2uWcq4OfxTM1R8gHfz6b1-CwRaV8G-rX7xvYpcjWe38GeugKCDm-5l5o2JNG8EfacoyB0wTdrdp4S9m46dyuD3aNy_FrrQ3nVnJ9y0RyVQuuZF6NZ9-NLWsHAiwFkn4G4mTOqqZjuKZd0feVrczvqH_gdWyAolpGeKE4t90DbbxHWewBBCZVaYyOH1qDy0epzy5D0-VCurK7SveMf_",
+    "recomendacao_uso": "Áreas internas de alto padrão, painéis decorativos, banheiros de luxo e tampos de lavatórios. Evitar uso em cozinhas."
+  },
+  {
+    "nome": "Verde Guatemala",
+    "categoria": "exoticos",
+    "categoria_exibicao": "Exótico",
+    "origem": "Guatemala",
+    "preco": "R$ 1.500 / m²",
+    "descricao": "Rocha exótica de cor verde-escura profunda com veios negros intensos que lembram florestas tropicais. Altíssimo apelo estético.",
+    "imagem": "https://lh3.googleusercontent.com/aida-public/AB6AXuA99SRMZN15HdAdDuHfgC7B4FwtiRIIgbBoHPTEQt_Wc_cQj9BjcweDfzN2oazz13CTLQUYwL4TYsC2VEP46ap_kS4mzESzzBAQpHFPp969qVdcoQlXmf8ErvS4DCyp7IPMc-b6E4Y-VbTFSMECedKgD4lAXCxWIbfWln0FJnsyjZ1O610Zc_bKKftD4LkwPzVKOuBDZ8IIu4n4I1HxIM_zUeDSm1myQ9dP3bovFgpt6mUDkZJby4GAMqrI2X5yG6jkEFcH2OBq_fiF",
+    "recomendacao_uso": "Paredes decorativas, tampos de lavabo, bordas de piscina, lareiras e detalhes ornamentais. Excelente durabilidade interna."
+  },
+  {
+    "nome": "Carrara Gioia",
+    "categoria": "marmore",
+    "categoria_exibicao": "Mármore",
+    "origem": "Itália",
+    "preco": "R$ 1.800 / m²",
+    "descricao": "Mármore italiano clássico de fundo branco brilhante com delicados veios cinzentos ramificados. O maior clássico atemporal da arquitetura.",
+    "imagem": "https://lh3.googleusercontent.com/aida-public/AB6AXuAVBonqFYFwBBZespu5p056JgBDHCV51vAwY99nOqnVnWtoDRPLZRp1GV7t-o2Oh-gpEKZDtVvzomgUYxX-0wQCi5J8gKwXhBEC_9ZCnqc2tiEFSh9_C5v5RCa2LipM62DV3ARy08ThrBpYUVT7r2ZqyLgZuzbaPnudVefXqoahX4IVT74cBUWnWyCzapmbPtaUbRiptxeLZyUxzKfvsOO6Z2w6FDSJSKiyeC00tnLyglPAPWP5RlMIv0V30ulgiLaj1jWxjA_1IgCY",
+    "recomendacao_uso": "Pisos internos, escadas residenciais, banheiros de luxo e tampos integrados."
+  },
+  {
+    "nome": "Travertino Romano",
+    "categoria": "marmore",
+    "categoria_exibicao": "Clássico",
+    "origem": "Itália",
+    "preco": "R$ 1.400 / m²",
+    "descricao": "Rocha calcária sedimentar de tons beges e textura rústica com cavidades naturais. Utilizada desde a antiguidade em tempos romanos.",
+    "imagem": "https://lh3.googleusercontent.com/aida-public/AB6AXuB8tMhOJTVlhy0myJ4fzcCUuEifqQ9v_19vGUPS-lFx-H3TcFs-yBR-_DlHpB-bPymjdDZWRZdLsoOnVNWPsJqI8EHlxmrOSvMQMw2o1nn8yILjGJk8sVTNK4xiMyULBkFA_TmjnEMZT0gii2Da3F6QQnutBpReU2nikH-F5doxRuQfN-DFjBXwgI0GJBKGlTj-2GbalqjpLzESLCU0eDQrZZtQHsX61UFgNC1fy1XS8U_xapWWTK6Q-wCpPWMYw3J_3lVDtQggBV8E",
+    "recomendacao_uso": "Revestimentos de paredes internas e externas, pisos internos e áreas secas residenciais. Requer impermeabilização em banheiros."
+  },
+  {
+    "nome": "Preto Absoluto",
+    "categoria": "granitos",
+    "categoria_exibicao": "Granito",
+    "origem": "Brasil",
+    "preco": "R$ 950 / m²",
+    "descricao": "Granito brasileiro nobre de granulação finíssima e cor preta homogênea absoluta. Oferece altíssima resistência a riscos, calor e manchas cotidianas.",
+    "imagem": "https://lh3.googleusercontent.com/aida-public/AB6AXuAtwvKH8hD2wb4SuuAMzmdb3Hhi4hmxqsl3HW_jPaKGUDebwTqzH5chGOPgrxCQXcInNWnuuXjeKb9rnZGthKwTrYGf_NSFxqm_E4gSnGlrUdt9NbE091g3Spj922mSrbJ1_P15V6ncXwCD1d0emLYMXCL_wsyvW7iM5YPJaSgkLYMYNl1Px88CZ2XkBIN7bE_fEWtoZZgtfhwe6hI8_VHYgoskxBHk6Ye-aCIn_4-vVflaD3DI8uofHNg1ZUKJfsUBykdROTUB9hIA",
+    "recomendacao_uso": "Bancadas de cozinha, áreas gourmet de alto padrão, escadas residenciais, tampos de alto tráfego e pisos externos resistentes."
+  },
+  {
+    "nome": "Arabescato Corchia",
+    "categoria": "marmore",
+    "categoria_exibicao": "Mármore",
+    "origem": "Itália",
+    "preco": "R$ 2.400 / m²",
+    "descricao": "Mármore brechado italiano com fundo branco-creme e veios cinzas e pretos arredondados ricamente entrelaçados. Obra-prima natural.",
+    "imagem": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600",
+    "recomendacao_uso": "Revestimentos de banheiros, tampos de aparadores, lareiras de luxo e revestimentos internos nobres."
+  },
+  {
+    "nome": "Super White",
+    "categoria": "exoticos",
+    "categoria_exibicao": "Quartzito",
+    "origem": "Brasil",
+    "preco": "R$ 1.950 / m²",
+    "descricao": "Quartzito natural brasileiro que une a estética luxuosa do mármore Carrara com a altíssima dureza e resistência a riscos e ácidos do granito.",
+    "imagem": "https://images.unsplash.com/photo-1540553016722-983e48a2cd10?w=600",
+    "recomendacao_uso": "Bancadas gourmet, tampos de jantar, revestimentos de parede e ilhas integradas de alta resistência."
+  },
+  {
+    "nome": "Cinza Platina",
+    "categoria": "granitos",
+    "categoria_exibicao": "Granito",
+    "origem": "Brasil",
+    "preco": "R$ 780 / m²",
+    "descricao": "Granito brasileiro altamente homogêneo de textura fina e cor cinza-metálica marcante. Extremamente estável e resiliente contra intempéries.",
+    "imagem": "https://images.unsplash.com/photo-1617791160505-6f00504e3519?w=600",
+    "recomendacao_uso": "Pisos comerciais, garagens, calçadas residenciais de alto tráfego e bancadas funcionais de alta durabilidade."
+  },
+  {
+    "nome": "Ônix Miel",
+    "categoria": "exoticos",
+    "categoria_exibicao": "Exótico",
+    "origem": "México",
+    "preco": "R$ 4.500 / m²",
+    "descricao": "Rocha semipreciosa translúcida de cor mel dourada exuberante. Cria efeitos luminosos espetaculares sob incidência traseira de luz LED.",
+    "imagem": "https://images.unsplash.com/photo-1565117131175-b436faca5ad4?w=600",
+    "recomendacao_uso": "Painéis de parede retroiluminados, balcões de recepção de alto padrão e tampos decorativos de bares."
+  }
+];
