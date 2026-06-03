@@ -932,12 +932,18 @@
     heroTitle.textContent = ''; // Limpa o texto original
 
     // Divide o texto por espaços e envolve cada palavra em um span individual com atrasos crescentes
-    text.split(' ').forEach((word, i) => {
+    const words = text.split(/\s+/);
+    words.forEach((word, i) => {
       const span = document.createElement('span');
-      span.textContent = word + ' ';
+      span.textContent = word;
       // Aplica um atraso dinâmico de 0.15s multiplicado pelo índice da palavra no texto
       span.style.animationDelay = `${i * 0.15}s`;
       heroTitle.appendChild(span);
+      
+      // Adiciona um nó de texto com espaço entre as palavras para evitar que fiquem coladas
+      if (i < words.length - 1) {
+        heroTitle.appendChild(document.createTextNode(' '));
+      }
     });
 
     // =====================================================================================
